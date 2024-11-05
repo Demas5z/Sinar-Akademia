@@ -11,10 +11,9 @@
 <div class="login-container">
     <div class="logo">Sinar Akademia</div>
     <div class="welcome-text">Hello, Welcome Back</div>
-    
-    <form method="POST" action="{{ route('login') }}">
+    <form action ="" method="POST">
         @csrf
-        <input type="email" name="email" placeholder="Enter Email" required autofocus>
+        <input type="email" name="email" value="{{ old('email') }}" placeholder="Enter Email" required autofocus>
         <input type="password" name="password" placeholder="Enter Password" required>
         <input type="submit" value="Sign In">
         
