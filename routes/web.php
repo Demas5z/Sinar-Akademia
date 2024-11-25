@@ -10,3 +10,11 @@ Route::get('/logout', [SesiController::class, 'logout']);
 
 // Dashboard
 Route::get('/dashboard', [SesiController::class, 'dashboard'])->name('dashboard');
+
+// Route untuk mahasiswa
+Route::get('/academic-status', function () {
+    return view('mahasiswa.academic_status');
+})->name('academic.status');
+Route::get('/akademik', function () {
+    return view('mahasiswa.akademik');
+})->name('akademik');

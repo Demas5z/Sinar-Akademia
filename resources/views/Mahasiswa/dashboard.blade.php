@@ -297,7 +297,7 @@
     <script>
         // Redirect to akademik page
         function redirectToAkademik() {
-            window.location.href = "akademik.html"; // Replace with the actual page URL
+            window.location.href = "{{ route('akademik') }}";
         }
 
         // Redirect to registrasi page
