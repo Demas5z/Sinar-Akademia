@@ -94,3 +94,69 @@
     color: white;
   }
   
+  .alert {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideIn 0.6s ease-in-out;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-left: 5px solid #fff;
+    overflow: hidden;
+  }
+  
+  .alert::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b6b, #ff3e3e);
+  }
+  
+  .alert i {
+    font-size: 20px;
+    animation: pop 0.3s ease-out;
+  }
+  
+  .alert-danger {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-left-color: #e74c3c;
+  }
+  
+  /* Animasi untuk alert */
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pop {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Tambahkan hover effect */
+  .alert:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
