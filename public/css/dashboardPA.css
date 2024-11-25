@@ -1,143 +1,128 @@
-/* Container Layout */
-.container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f2f4f8;
 }
 
-.header {
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    background-color: #146464;
-    color: #fff;
-    font-size: 20px;
-}
-
-/* Main Content Layout */
-.main-content {
-    display: flex;
-    flex: 1;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 200px;
-    background-color: #ecf0f1;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin-bottom: 10px;
-}
-
-.sidebar ul li a {
-    color: #34495e;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.sidebar ul li a.active,
-.sidebar ul li a:hover {
-    font-weight: bold;
-    color: #e0e0e0;
-    background-color: #144444;
-}
-
-/* Profile Content */
-.profile-content {
-    flex: 1;
-    padding: 20px;
-}
-
-.profile-header {
-    margin-bottom: 20px;
-}
-
-/* Profile Details */
-.profile-details {
-    display: flex;
-    gap: 120px;
-    margin-top: 100px;
-}
-
-/* Profile Picture Section */
-.profile-picture-section {
-    width: 25%;
-    text-align: center;
-}
-
-.profile-picture-section .profile-picture img {
-    width: 150px;
-    height: 150px;
-    background-color: #e0e0e0;
-}
-
-.profile-picture-section p {
-    margin-top: 10px;
-}
-
-.role {
-    color: #7f8c8d;
-}
-
-/* Profile Info Section */
-.profile-info-section {
-    width: 75%;
-}
-
-.profile-info-section table {
-    width: 100%;
-    border-collapse: collapse;
-    color: #333;
-}
-
-.profile-info-section td {
-    padding: 8px 0;
-}
-
-.profile-info-section td:first-child,
-.profile-info-section td:nth-child(4) {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.button-group {
-    margin-top: 5%;
-}
-
-/* Buttons */
-.btn {
+    align-items: center;
     padding: 10px 20px;
-    border-radius: 4px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    margin-right: 10px;
+    background: linear-gradient(to right, #2cc0cf, #38b8a4);
+    color: white;
 }
 
-.btn-danger {
-    background-color: #e74c3c;
+.logo {
+    font-size: 24px;
+    font-weight: 600;
 }
 
-.btn-primary {
-    background-color: #3498db;
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #146464;
-    color: #fff;
+.user-icon {
+    font-size: 24px;
+}
+
+.user-role {
+    font-size: 16px;
+}
+
+.dropdown {
+    font-size: 18px;
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Profile Card */
+.profile-card {
+    display: flex;
+    background: #2cc0cf;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+    gap: 20px;
+    align-items: center;
+}
+
+.profile-image {
+    flex: 0 0 auto;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.profile-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-row span {
+    width: 45%;
     font-size: 14px;
+}
+
+/* Menu Section */
+.menu-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.menu-card {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.menu-card:hover {
+    transform: scale(1.05);
+}
+
+.menu-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #2cc0cf;
+}
+
+.menu-card p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
 }

@@ -1,136 +1,146 @@
-/* public/css/login.css */
+/* General Styling */
+/* Background untuk keseluruhan halaman */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background: url("../img/Login_Page.jpg") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Reset some default browser styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-  }
+/* Container */
+.login-container {
+  display: flex;
+  flex-direction: row;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 900px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Left Section */
+.logo-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo-circle {
+  border-radius: 50%;
+  text-align: center;
+  padding: 50px;
+  background : url("../img/Background_sinar_akademia.png") no-repeat center center/cover;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+/* Right Section */
+.form-section {
+  flex: 1.5;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+form input::placeholder {
+  color: #ccc;
+}
+
+form .forgot-password {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+form .forgot-password a {
+  color: #3eb2fd;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+form input[type="submit"] {
+  background: #4CAF50; /* Warna hijau (contoh) */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer; /* Pointer muncul saat hover */
+  transition: background 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background: #214d23; /* Warna lebih gelap saat hover */
+}
+
   
-  body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #1E1E1E, #00A9A5);
-  }
-  
-  /* Container for the login form */
-  .login-container {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Logo or title styling */
-  .logo {
-    font-size: 32px;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 20px;
-  }
-  
-  .welcome-text {
-    font-size: 18px;
-    color: white;
-    margin-bottom: 30px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  input[type="email"],
-  input[type="password"] {
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    font-size: 16px;
-  }
-  
-  input[type="email"]::placeholder,
-  input[type="password"]::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  input[type="submit"] {
-    padding: 12px;
-    margin-top: 20px;
-    background-color: #00A9A5;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #007F7B;
-  }
-  
-  /* Forgot password link */
-  .forgot-password {
-    margin-top: 10px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  .forgot-password a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-  }
-  
-  .forgot-password a:hover {
-    color: white;
-  }
-  
-  .alert {
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    animation: slideIn 0.6s ease-in-out;
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    border-left: 5px solid #fff;
-    overflow: hidden;
-  }
-  
-  .alert::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 100%;
-    background: linear-gradient(135deg, #ff6b6b, #ff3e3e);
-  }
-  
-  .alert i {
-    font-size: 20px;
-    animation: pop 0.3s ease-out;
-  }
-  
-  .alert-danger {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    border-left-color: #e74c3c;
-  }
-  
+.alert {
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideIn 0.6s ease-in-out;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  border-left: 5px solid #fff;
+  overflow: hidden;
+}
+
+.alert::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  background: linear-gradient(135deg, #ff6b6b, #ff3e3e);
+}
+
+.alert i {
+  font-size: 20px;
+  animation: pop 0.3s ease-out;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  border-left-color: #e74c3c;
+}
   /* Animasi untuk alert */
   @keyframes slideIn {
     from {
@@ -153,10 +163,3 @@
       opacity: 1;
     }
   }
-  
-  /* Tambahkan hover effect */
-  .alert:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-  
