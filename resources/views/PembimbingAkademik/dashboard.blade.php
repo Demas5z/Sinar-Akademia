@@ -39,7 +39,7 @@
                     <!-- Profile Picture Section -->
                     <div class="profile-picture-section">
                         <div class="profile-picture">
-                            <img src="/path/to/profile-image.png" alt="Profile Picture">
+                            <img src="{{ asset('img/download.jpeg') }}" alt="Profile Picture">
                         </div>
                         <p>Dosen Akademik</p>
                         <p class="role">Pembimbing Akademik</p>
@@ -50,42 +50,42 @@
                         <table>
                             <tr>
                                 <td>Nama</td>
-                                <td>:</td>
+                                <td>:Aris Puji</td>
                                 <td></td>
                                 <td>Kota Lahir</td>
-                                <td>:</td>
+                                <td>:Palembang</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Tanggal Lahir</td>
-                                <td>:</td>
+                                <td>:1 November 1978</td>
                                 <td></td>
                                 <td>NIDN</td>
-                                <td>:</td>
+                                <td>:1231294124</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td>:</td>
+                                <td>:Perum Tembalang</td>
                                 <td></td>
                                 <td>NIY</td>
-                                <td>:</td>
+                                <td>:12312423423423</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Nomor HP</td>
-                                <td>:</td>
+                                <td>:082111608530</td>
                                 <td></td>
                                 <td>Jabatan Struktural</td>
-                                <td>:</td>
+                                <td>:dosen</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>:</td>
+                                <td>:aris@gmail.com</td>
                                 <td></td>
                                 <td>Jabatan Fungsional</td>
-                                <td>:</td>
+                                <td>:Pembimbing Akademik</td>
                                 <td></td>
                             </tr>
                         </table>

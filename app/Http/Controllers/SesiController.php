@@ -7,28 +7,78 @@ use Illuminate\Support\Facades\Auth;
 
 class SesiController extends Controller
 {
-    function index(){
+    // Menampilkan halaman login
+    public function index()
+    {
         return view('login');
     }
 
-    function login(Request $request){
+    // Proses login
+    public function login(Request $request)
+    {
+        // Validasi input login
         $request->validate([
-            'email'=>'required',
-            'password'=>'required'
+            'email' => 'required|email',
+            'password' => 'required'
         ], [
-            'email.required'=>'Email wajib diisi',
-            'password.required'=>'Password wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'email.email' => 'Format email tidak valid',
         ]);
 
-        $infologin = [
-            'email'=>$request->email,
-            'password'=>$request->password,
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
         ];
 
-        if(Auth::attempt($infologin)){
-            return redirect('dashboard');
-        }else{
-            return redirect('')->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();
-        };
+        // Autentikasi
+        if (Auth::attempt($credentials)) {
+            // Ambil role pengguna
+            $role = Auth::user()->role;
+
+            // Simpan role ke session
+            session(['role' => $role]);
+
+            // Redirect ke dashboard
+            return redirect()->route('dashboard');
+        }
+
+        // Jika login gagal
+        return redirect('/')
+            ->withErrors('Email atau password salah')
+            ->withInput();
+    }
+
+    // Menampilkan dashboard berdasarkan role
+    public function dashboard()
+    {
+        // Ambil role dari session
+        $role = session('role');
+
+        // Logika untuk mengarahkan berdasarkan role
+        switch ($role) {
+            case 'Mahasiswa':
+                return view('mahasiswa.dashboard');
+            case 'PembimbingAkademik':
+                return view('PembimbingAkademik.dashboard');
+            case 'Kaprodi':
+                return view('kaprodi.dashboard');
+            case 'BagianAkademik':
+                return view('akademik.dashboard');
+            case 'Dekan':
+                return view('dekan.dashboard');
+            default:
+                // Logout jika role tidak valid
+                Auth::logout();
+                return redirect('/')->withErrors('Role tidak dikenali');
+        }
+    }
+
+    // Proses logout
+    public function logout()
+    {
+        Auth::logout();
+        session()->flush();
+        return redirect('/')->with('success', 'Anda berhasil logout');
     }
 }
