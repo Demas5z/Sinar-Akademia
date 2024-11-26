@@ -19,3 +19,23 @@ Route::get('/academic-status', function () {
 Route::get('/akademik', function () {
     return view('mahasiswa.akademik');
 })->name('akademik');
+
+// Route untuk Akademik
+Route::get('/daftar-ruang', function () {
+    return view('Akademik.DaftarRuang');
+})->name('daftar.ruang');
+Route::get('/buat-daftar-ruang', function () {
+    return view('Akademik.BuatDaftarRuang');
+})->name('buat.daftar.ruang');
+
+
+//Route untuk Dekan
+Route::get('/persetujuan-dekan', function () {
+    return view('Dekan.Persetujuan');
+})->name('persetujuan.dekan');
+Route::get('/persetujuan-jadwal-dekan', function () {
+    return view('Dekan.PersetujuanJadwal');
+})->name('persetujuan.jadwal.dekan');
+Route::get('/persetujuan-ruang-dekan', function () {
+    return view('Dekan.PersetujuanRuangan');
+})->name('persetujuan.ruang.dekan');
