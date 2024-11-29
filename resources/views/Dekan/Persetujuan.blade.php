@@ -8,14 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="navbar">
-        <h1 class="logo">Sinar Akademia</h1>
-        <div class="user-info">
-            <div class="user-icon">👤</div>
-            <span class="user-role">Dekan</span>
-            <div class="dropdown">⏷</div>
-        </div>
-    </header>
+    <x-navbar>Dekan</x-navbar>
     
     
     <main class="container">

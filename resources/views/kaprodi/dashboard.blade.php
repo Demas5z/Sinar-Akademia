@@ -8,7 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <x-navbar>Dosen</x-navbar>
+    <header class="navbar">
+        <h1 class="logo">Sinar Akademia</h1>
+        <div class="user-info">
+            <div class="user-icon">👤</div>
+            <span class="user-role">Dosen</span>
+            <div class="dropdown">⏷</div>
+        </div>
+    </header>
 
     <main class="container">
         <section class="profile-card">
@@ -17,11 +24,11 @@
             </div>
             <div class="profile-info">
                 <div class="info-row">
-                    <span>Nama :</span> <span>Nama Dosen</span>
-                    <span>Email :</span> <span>email@example.com</span>
+                    <span>Nama :</span> <span>Aris Sugiharto</span>
+                    <span>Email :</span> <span>arissugiharto@gmail.com</span>
                 </div>
                 <div class="info-row">
-                    <span>Tanggal Lahir :</span> <span>01-01-1990</span>
+                    <span>Tanggal Lahir :</span> <span>11-08-1971</span>
                     <span>Kota Lahir :</span> <span>Yogyakarta</span>
                 </div>
                 <div class="info-row">
@@ -36,25 +43,21 @@
         </section>
 
         <section class="menu-section">
-            <div class="menu-card">
+            <div class="menu-card"  onclick=" redirectToJadwal()">
                 <div class="menu-icon">🎓</div>
-                <p>Perkuliahan</p>
+                <p>Penjadwalan</p>
             </div>
             <div class="menu-card">
                 <div class="menu-icon">👨‍👩‍👧‍👦</div>
                 <p>Perwalian</p>
             </div>
-            <div class="menu-card" onclick="redirectToPersetujuan()">
-                <div class="menu-icon">📖</div>
-                <p>Persetujuan</p>
-            </div>
         </section>
     </main>
-
-    <script>
-        function redirectToPersetujuan() {
-            window.location.href = "{{ route('persetujuan.dekan') }}";
-        }
-    </script>
 </body>
 </html>
+
+<script>
+    function redirectToJadwal() {
+            window.location.href = "{{ route('kaprodi.jadwal') }}";
+        }
+</script>

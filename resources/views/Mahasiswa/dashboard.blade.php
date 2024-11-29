@@ -201,18 +201,7 @@
     </style>
 </head>
 <body>
-    <div class="header-bar">
-        <h3>Sinar Akademia</h3>
-        <div class="user-menu" onclick="toggleProfileDropdown()">
-            <span>Mahasiswa</span>
-            <i class="fas fa-user-circle"></i>
-            <div class="dropdown-profile" id="profile-dropdown">
-                <a href="#"><i class="fas fa-user"></i> Biodata</a>
-                <a href="#"><i class="fas fa-cog"></i> Setting</a>
-                <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            </div>
-        </div>
-    </div>
+    <x-navbar>Mahasiswa</x-navbar>
 
     <div class="main-container">
         <!-- Profile Card -->
