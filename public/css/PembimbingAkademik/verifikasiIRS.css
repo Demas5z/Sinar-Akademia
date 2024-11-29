@@ -1,0 +1,179 @@
+/* CSS Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+.navbar {
+    background: linear-gradient(to right, #2cc0cf, #38b8a4);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar .user-info .user-role {
+    font-size: 14px;
+}
+
+.container {
+    max-width: 90%;
+    margin: 10px auto;
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #38b8a4;
+    margin-bottom: 10px;
+}
+
+.info{
+    background-color: #38b8a4;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.info p {
+    font-size: 20px;
+    color: white;
+    margin: 2px 0;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #dddddd;
+}
+
+.table th {
+    background-color: #38b8a4;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button.agree {
+    background-color: #38b000;
+    color: #ffffff;
+}
+
+button.disagree {
+    background-color: #d00000;
+    color: #ffffff;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #38b8a4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #2c9c8d;
+}
+
+/* CSS untuk efek blur */
+#table {
+    transition: filter 0.3s ease;
+}
+
+.blur {
+    filter: blur(5px);
+}
+
+/* Popup untuk pesan setelah Setuju */
+.blur-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.blur-message.show {
+    display: flex;
+}
+
+.popup {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.popup h2 {
+    margin: 0 0 20px;
+}
+
+.popup button {
+    padding: 10px 20px;
+    background-color: #38b8a4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #2c9c8d;
+}
