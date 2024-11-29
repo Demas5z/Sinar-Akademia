@@ -12,23 +12,16 @@ Route::get('/logout', [SesiController::class, 'logout']);
 // Dashboard
 Route::get('/dashboard', [SesiController::class, 'dashboard'])->name('dashboard');
 
-// Route untuk mahasiswa
-Route::get('/academic-status', function () {
-    return view('mahasiswa.academic_status');
-})->name('academic.status');
-Route::get('/akademik', function () {
-    return view('mahasiswa.akademik');
-})->name('akademik');
+// Masukkan rute role mahasiswa
+require base_path('routes/mahasiswa.php');
 
-// Route untuk Akademik
-Route::get('/daftar-ruang', function () {
-    return view('Akademik.DaftarRuang');
-})->name('daftar.ruang');
-Route::get('/buat-daftar-ruang', function () {
-    return view('Akademik.BuatDaftarRuang');
-})->name('buat.daftar.ruang');
+// // Masukkan rute role akademik
+require base_path('routes/akademik.php');
 
+// Masukkan rute role dekan
+require base_path('routes/Dekan.php');
 
+<<<<<<< HEAD
 //Route untuk Dekan
 Route::get('/persetujuan-dekan', function () {
     return view('Dekan.Persetujuan');
@@ -48,3 +41,10 @@ Route::get('/perwalian', function () {
 Route::get('/verifikasiIRS', function () {
     return view('PembimbingAkademik.verifikasiIRS');
 })->name('VerifikasiIRS.PembimbingAkademik');
+=======
+// Masukkan rute role pembimbing akademik
+require base_path('routes/pembimbing_akademik.php');
+
+// Masukkan rute role pembimbing kaprodi
+require base_path('routes/kaprodi.php');
+>>>>>>> 7f5bee2186927d21197a5ebe5ac269e12e323704
