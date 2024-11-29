@@ -12,34 +12,17 @@ Route::get('/logout', [SesiController::class, 'logout']);
 // Dashboard
 Route::get('/dashboard', [SesiController::class, 'dashboard'])->name('dashboard');
 
-// Route untuk mahasiswa
-Route::get('/academic-status', function () {
-    return view('mahasiswa.academic_status');
-})->name('academic.status');
-Route::get('/akademik', function () {
-    return view('mahasiswa.akademik');
-})->name('akademik');
+// Masukkan rute role mahasiswa
+require base_path('routes/mahasiswa.php');
 
-// Route untuk Akademik
-Route::get('/daftar-ruang', function () {
-    return view('Akademik.DaftarRuang');
-})->name('daftar.ruang');
-Route::get('/buat-daftar-ruang', function () {
-    return view('Akademik.BuatDaftarRuang');
-})->name('buat.daftar.ruang');
+// // Masukkan rute role akademik
+require base_path('routes/akademik.php');
 
-//Route untuk Dekan
-Route::get('/persetujuan-dekan', function () {
-    return view('Dekan.Persetujuan');
-})->name('persetujuan.dekan');
-Route::get('/persetujuan-jadwal-dekan', function () {
-    return view('Dekan.PersetujuanJadwal');
-})->name('persetujuan.jadwal.dekan');
-Route::get('/persetujuan-ruang-dekan', function () {
-    return view('Dekan.PersetujuanRuangan');
-})->name('persetujuan.ruang.dekan');
+// Masukkan rute role dekan
+require base_path('routes/Dekan.php');
 
-//Route untuk kaprodi
-Route::get('/jadwal', function () {
-    return view('kaprodi.jadwal');
-})->name('kaprodi.jadwal');
+// Masukkan rute role pembimbing akademik
+require base_path('routes/pembimbing_akademik.php');
+
+// Masukkan rute role pembimbing kaprodi
+require base_path('routes/kaprodi.php');
