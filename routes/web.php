@@ -21,30 +21,9 @@ require base_path('routes/akademik.php');
 // Masukkan rute role dekan
 require base_path('routes/Dekan.php');
 
-<<<<<<< HEAD
-//Route untuk Dekan
-Route::get('/persetujuan-dekan', function () {
-    return view('Dekan.Persetujuan');
-})->name('persetujuan.dekan');
-Route::get('/persetujuan-jadwal-dekan', function () {
-    return view('Dekan.PersetujuanJadwal');
-})->name('persetujuan.jadwal.dekan');
-Route::get('/persetujuan-ruang-dekan', function () {
-    return view('Dekan.PersetujuanRuangan');
-})->name('persetujuan.ruang.dekan');
-
-//Route untuk PembimbingAkademik
-Route::get('/perwalian', function () {
-    return view('PembimbingAkademik.perwalian');
-})->name('perwalian.PembimbingAkademik');
-
-Route::get('/verifikasiIRS', function () {
-    return view('PembimbingAkademik.verifikasiIRS');
-})->name('VerifikasiIRS.PembimbingAkademik');
-=======
 // Masukkan rute role pembimbing akademik
 require base_path('routes/pembimbing_akademik.php');
 
 // Masukkan rute role pembimbing kaprodi
 require base_path('routes/kaprodi.php');
->>>>>>> 7f5bee2186927d21197a5ebe5ac269e12e323704
+
