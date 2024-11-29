@@ -7,38 +7,6 @@ body {
 }
 
 /* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: linear-gradient(to right, #2cc0cf, #38b8a4);
-    color: white;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.user-icon {
-    font-size: 24px;
-}
-
-.user-role {
-    font-size: 16px;
-}
-
-.dropdown {
-    font-size: 18px;
-}
 
 /* Main Container */
 .container {

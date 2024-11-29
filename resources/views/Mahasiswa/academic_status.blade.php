@@ -16,27 +16,6 @@
             padding: 0;
         }
 
-        .header-bar {
-            background-color: #00796b;
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-bar h3 {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .header-bar i {
-            font-size: 20px;
-            margin-left: 10px;
-        }
-
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -146,13 +125,7 @@
 </head>
 <body>
     <!-- Header -->
-    <div class="header-bar">
-        <h3>Sinar Akademia</h3>
-        <div>
-            <span>Mahasiswa</span>
-            <i class="fas fa-user-circle"></i>
-        </div>
-    </div>
+    <x-navbar>Mahasiswa</x-navbar>
 
     <!-- Main Content -->
     <div class="container">

@@ -7,17 +7,12 @@
     <link rel="stylesheet" href="{{ asset('css/Dekan/PersetujuanRuang.css') }}">
 </head>
 <body>
-<div class="navbar">
-        <div class="logo">Sinar Akademia</div>
-        <div class="user-info">
-            <div class="user-role">Dekan</div>
-        </div>
-    </div>
+    <x-navbar>Dekan</x-navbar>
 
     <div class="container">
     <button class="back-btn" onclick="history.back()">← Back</button>
+    <h2>🏛️ Pengajuan Ruangan</h2>
         <div class="card">
-            <h2>🏛️ Pengajuan Ruangan</h2>
             <table class="schedule-table">
                 <thead>
                     <tr>
