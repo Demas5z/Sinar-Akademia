@@ -8,14 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="navbar">
-        <h1 class="logo">Sinar Akademia</h1>
-        <div class="user-info">
-            <div class="user-icon">👤</div>
-            <span class="user-role">Dosen</span>
-            <div class="dropdown">⏷</div>
-        </div>
-    </header>
+    <x-navbar>Dosen</x-navbar>
 
     <main class="container">
         <section class="profile-card">
@@ -43,11 +36,11 @@
         </section>
 
         <section class="menu-section">
-            <div class="menu-card">
+            <div class="menu-card" onclick="redirectToPerkuliahan()">
                 <div class="menu-icon">🎓</div>
                 <p>Perkuliahan</p>
             </div>
-            <div class="menu-card">
+            <div class="menu-card" onclick="redirectToPerwalian()">
                 <div class="menu-icon">👨‍👩‍👧‍👦</div>
                 <p>Perwalian</p>
             </div>
@@ -55,3 +48,12 @@
     </main>
 </body>
 </html>
+<script>
+        function redirectToPerkuliahan() {
+            window.location.href = "{{ route('perkuliahan') }}";
+        }
+
+        function redirectToPerwalian() {
+            window.location.href = "{{ route('perwalian') }}";
+        }
+</script>

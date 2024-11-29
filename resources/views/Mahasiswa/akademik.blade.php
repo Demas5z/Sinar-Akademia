@@ -113,14 +113,7 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <h1>Sinar Akademia</h1>
-    <div class="user-menu">
-      <span class="user">Mahasiswa</span>
-      <img src="https://via.placeholder.com/30" alt="User Icon" class="user-icon">
-    </div>
-  </header>
-
+  <x-navbar>Mahasiswa</x-navbar>
   <div class="container">
     <nav class="nav">
       <ul>

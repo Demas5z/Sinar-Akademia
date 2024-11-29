@@ -5,28 +5,14 @@ body {
     background-color: #f0f4f8;
 }
 
-.navbar {
-    background: linear-gradient(to right, #2cc0cf, #38b8a4);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.navbar .logo {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.navbar .user-info .user-role {
-    font-size: 14px;
-}
-
 .container {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
+    padding: 20px 40px;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
 }
 
 .card {
@@ -34,13 +20,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-}
-
-.card h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
 }
 
 /* Table Styling */

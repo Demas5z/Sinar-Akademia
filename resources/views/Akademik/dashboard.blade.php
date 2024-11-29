@@ -8,14 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="navbar">
-        <h1 class="logo" onclick="">Sinar Akademia</h1>
-        <div class="user-info">
-            <div class="user-icon">👤</div>
-            <span class="user-role">Bagian Akademik</span>
-            <div class="dropdown">⏷</div>
-        </div>
-    </header>
+    <x-navbar>Bagian Akademik</x-navbar>
 
     <main class="container">
         <section class="profile-card">

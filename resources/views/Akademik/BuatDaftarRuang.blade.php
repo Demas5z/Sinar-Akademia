@@ -7,12 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/Akademik/BuatDaftarRuang.css') }}">
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo" onclick="redirectTodashboard()">Sinar Akademia</div>
-        <div class="user-info">
-            <div class="user-role">Bagian Akademik</div>
-        </div>
-    </div>
+    <x-navbar>Bagian Akademik</x-navbar>
 
     <div class="container">
         <button class="back-btn" onclick="history.back()">← Back</button>
@@ -26,123 +21,126 @@
 
         <div class="card">
             <div class="accordion">
-                <div class="accordion-item">
-                    <div class="accordion-header">Gedung A <span class="status">▼</span></div>
-                    <div class="accordion-body">
-                        <div class="room">
-                            <span>Ruang A101</span>
-                            <select>
-                                <option value="">Program Studi</option>
-                                <option value="">Biologi</option>
-                                <option value="">Fisika</option>
-                                <option value="">Informatika</option>
-                                <option value="">Kimia</option>
-                                <option value="">Matematika</option>
-                                <option value="">Statistika</option>
-                            </select>
-                            <select>
-                                <option value="">Program Studi</option>
-                                <option value="">Biologi</option>
-                                <option value="">Fisika</option>
-                                <option value="">Informatika</option>
-                                <option value="">Kimia</option>
-                                <option value="">Matematika</option>
-                                <option value="">Statistika</option>
-                            </select>
-                        </div>
-                        <div class="room">
-                            <span>Ruang A102</span>
-                            <select>
-                                <option value="">Program Studi</option>
-                                <option value="">Biologi</option>
-                                <option value="">Fisika</option>
-                                <option value="">Informatika</option>
-                                <option value="">Kimia</option>
-                                <option value="">Matematika</option>
-                                <option value="">Statistika</option>
-                            </select>
-                            <select>
-                                <option value="">Program Studi</option>
-                                <option value="">Biologi</option>
-                                <option value="">Fisika</option>
-                                <option value="">Informatika</option>
-                                <option value="">Kimia</option>
-                                <option value="">Matematika</option>
-                                <option value="">Statistika</option>
-                            </select>
-                        </div>
-                        <div class="room">
-                            <span>Ruang A103</span>
-                            <select>
-                                <option value="">Program Studi</option>
-                                <option value="">Biologi</option>
-                                <option value="">Fisika</option>
-                                <option value="">Informatika</option>
-                                <option value="">Kimia</option>
-                                <option value="">Matematika</option>
-                                <option value="">Statistika</option>
-                            </select>
-                            <select>
-                                <option value="">Program Studi</option>
-                                <option value="">Biologi</option>
-                                <option value="">Fisika</option>
-                                <option value="">Informatika</option>
-                                <option value="">Kimia</option>
-                                <option value="">Matematika</option>
-                                <option value="">Statistika</option>
-                            </select>
-                        </div>
-                        <div class="room">
-                            <span>Ruang A303</span>
-                            <select>
-                                <option value="">Program Studi</option>
-                                <option value="">Biologi</option>
-                                <option value="">Fisika</option>
-                                <option value="">Informatika</option>
-                                <option value="">Kimia</option>
-                                <option value="">Matematika</option>
-                                <option value="">Statistika</option>
-                            </select>
-                            <select>
-                                <option value="">Program Studi</option>
-                                <option value="">Biologi</option>
-                                <option value="">Fisika</option>
-                                <option value="">Informatika</option>
-                                <option value="">Kimia</option>
-                                <option value="">Matematika</option>
-                                <option value="">Statistika</option>
-                            </select>
-                        </div>
-                    </div>
+                <x-table-gedung>
+                    Gedung A
+                    <div class="room">
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
                 </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">Gedung B <span class="status">▼</span></div>
-                    <div class="accordion-body"></div>
+                </x-table-gedung>
+                <x-table-gedung>
+                    Gedung B
+                    <div class="room">
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
                 </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">Gedung C <span class="status">▼</span></div>
-                    <div class="accordion-body"></div>
+                </x-table-gedung>
+                <x-table-gedung>
+                    Gedung C
+                    <div class="room">
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
                 </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">Gedung D <span class="status">▼</span></div>
-                    <div class="accordion-body"></div>
+                </x-table-gedung>
+                <x-table-gedung>
+                    Gedung D
+                    <div class="room">
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
                 </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">Gedung E <span class="status">▼</span></div>
-                    <div class="accordion-body"></div>
+                </x-table-gedung>
+                <x-table-gedung>
+                    Gedung E
+                    <div class="room">
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
+                        <select>
+                            <option value="">Program Studi</option>
+                            <option value="">Biologi</option>
+                            <option value="">Fisika</option>
+                            <option value="">Informatika</option>
+                            <option value="">Kimia</option>
+                            <option value="">Matematika</option>
+                            <option value="">Statistika</option>
+                        </select>
                 </div>
+                </x-table-gedung>
             </div>
         </div>
     </div>
 
     <script>
-        const headers = document.querySelectorAll('.accordion-header');
-        headers.forEach(header => {
-            header.addEventListener('click', () => {
-                header.parentElement.classList.toggle('active');
-            });
-        });
-
         function redirectTodashboard() {
             window.location.href = "{{ route('dashboard') }}";
         }
