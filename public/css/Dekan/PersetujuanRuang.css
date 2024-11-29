@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+.navbar {
+    background: linear-gradient(to right, #2cc0cf, #38b8a4);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar .user-info .user-role {
+    font-size: 14px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Table Styling */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.schedule-table thead th {
+    background-color: #064e3b;
+    color: white;
+    text-align: center;
+}
+
+.schedule-table tbody tr:nth-child(odd) {
+    background-color: #d1fae5;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+    background-color: #a7f3d0;
+}
+
+.schedule-table tbody td {
+    color: #333;
+    text-align: center;
+}
+
+/* Button Styling */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-open {
+    background-color: #4a90e2;
+}
+
+.btn-open:hover {
+    background-color: #3b78c1;
+}
+
+.btn-approve {
+    background-color: #38b8a4;
+}
+
+.btn-approve:hover {
+    background-color: #2aa890;
+}
+
+.btn-reject {
+    background-color: #d9534f;
+}
+
+.btn-reject:hover {
+    background-color: #c9302c;
+}
+
+/* Back Button Styling */
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #38b8a4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #2c9c8d;
+}

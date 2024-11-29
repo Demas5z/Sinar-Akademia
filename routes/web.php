@@ -20,11 +20,6 @@ Route::get('/akademik', function () {
     return view('mahasiswa.akademik');
 })->name('akademik');
 
-// Route untuk Kaprodi
-Route::get('/jadwal', function () {
-    return view('kaprodi.jadwal');
-})->name('kaprodi.jadwal');
-
 // Route untuk Akademik
 Route::get('/daftar-ruang', function () {
     return view('Akademik.DaftarRuang');
@@ -43,4 +38,3 @@ Route::get('/persetujuan-jadwal-dekan', function () {
 })->name('persetujuan.jadwal.dekan');
 Route::get('/persetujuan-ruang-dekan', function () {
     return view('Dekan.PersetujuanRuangan');
-})->name('persetujuan.ruang.dekan');
