@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sinar Akademia</title>
-    <link rel="stylesheet" href="{{ asset('css/dashboardPA.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/PembimbingAkademik/dashboardPA.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -47,11 +47,17 @@
                 <div class="menu-icon">🎓</div>
                 <p>Perkuliahan</p>
             </div>
-            <div class="menu-card">
+            <div class="menu-card" onclick="redirectToPerwalian()">
                 <div class="menu-icon">👨‍👩‍👧‍👦</div>
                 <p>Perwalian</p>
             </div>
         </section>
     </main>
+
+    <script>
+        function redirectToPerwalian() {
+            window.location.href = "{{ route('perwalian.PembimbingAkademik') }}";
+        }
+    </script>
 </body>
 </html>

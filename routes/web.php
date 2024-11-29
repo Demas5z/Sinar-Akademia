@@ -39,3 +39,12 @@ Route::get('/persetujuan-jadwal-dekan', function () {
 Route::get('/persetujuan-ruang-dekan', function () {
     return view('Dekan.PersetujuanRuangan');
 })->name('persetujuan.ruang.dekan');
+
+//Route untuk PembimbingAkademik
+Route::get('/perwalian', function () {
+    return view('PembimbingAkademik.perwalian');
+})->name('perwalian.PembimbingAkademik');
+
+Route::get('/verifikasiIRS', function () {
+    return view('PembimbingAkademik.verifikasiIRS');
+})->name('VerifikasiIRS.PembimbingAkademik');
