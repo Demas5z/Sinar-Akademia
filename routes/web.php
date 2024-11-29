@@ -38,4 +38,3 @@ Route::get('/persetujuan-jadwal-dekan', function () {
 })->name('persetujuan.jadwal.dekan');
 Route::get('/persetujuan-ruang-dekan', function () {
     return view('Dekan.PersetujuanRuangan');
-})->name('persetujuan.ruang.dekan');
