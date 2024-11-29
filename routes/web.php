@@ -28,7 +28,6 @@ Route::get('/buat-daftar-ruang', function () {
     return view('Akademik.BuatDaftarRuang');
 })->name('buat.daftar.ruang');
 
-
 //Route untuk Dekan
 Route::get('/persetujuan-dekan', function () {
     return view('Dekan.Persetujuan');
