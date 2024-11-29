@@ -13,13 +13,27 @@ class DummyUsersSeeder extends Seeder
      */
     public function run(): void
     {
+
         $userData = [
             [
                 'name'=>'Shafi',
                 'email'=>'Shafi@gmail.com',
                 'role'=>'Mahasiswa',
                 'password'=>bcrypt('123')
+            ],
+            [
+                'name'=>'Aris Sugiharto',
+                'email'=>'arissugiharto@gmail.com',
+                'role'=>'Kaprodi',
+                'password'=>bcrypt('123')
+            ],
+            [
+                'name'=>'Aris Puji',
+                'email'=>'aris@gmail.com',
+                'role'=>'PembimbingAkademik',
+                'password'=>bcrypt('123')
             ]
+
         ];
 
         foreach($userData as $key => $val){

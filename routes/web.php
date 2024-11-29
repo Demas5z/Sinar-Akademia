@@ -19,3 +19,8 @@ Route::get('/academic-status', function () {
 Route::get('/akademik', function () {
     return view('mahasiswa.akademik');
 })->name('akademik');
+
+// Route untuk Kaprodi
+Route::get('/jadwal', function () {
+    return view('kaprodi.jadwal');
+})->name('kaprodi.jadwal');
