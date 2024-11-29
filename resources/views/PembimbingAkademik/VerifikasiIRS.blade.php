@@ -8,13 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="content">
-        <div class="navbar">
-            <div class="logo">Sinar Akademia</div>
-            <div class="user-info">
-                <div class="user-role">Pembimbing Akademik</div>
-            </div>
-        </div>
+    <x-navbar>Pembimbing Akademik</x-navbar>
 
         <div class="container">
             <button class="back-btn" onclick="history.back()">← Back</button>

@@ -126,11 +126,7 @@
 </head>
 <body>
     <!-- Header Bar -->
-    <div class="header-bar">
-        <h3>Sinar Akademia</h3>
-        <!-- Tombol Back -->
-        <a onclick="history.back()" class="back-button">Back</a>
-    </div>
+    <x-navbar>Ketua Program Studi</x-navbar>
 
     <!-- Calendar -->
     <div class="calendar-wrapper">
