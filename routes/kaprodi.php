@@ -7,3 +7,7 @@ use App\Http\Controllers\SesiController;
 Route::get('/jadwal', function () {
     return view('kaprodi.jadwal');
 })->name('kaprodi.jadwal');
+
+Route::get('/kaprodi/dashboard', function () {
+    return view('kaprodi.dashboard');
+})->name('kaprodi.dashboard');
