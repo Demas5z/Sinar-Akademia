@@ -16,51 +16,34 @@ class RuangSeeder extends Seeder
     {
         DB::table('ruang')->insert(
         [
-            'Nama_Ruang' => 'E101',
-            'Kuota' => 50,
-            'Gedung' => 'E',
-        ]);
-
-        DB::table('ruang')->insert(
-        [
-            'Nama_Ruang' => 'E102',
-            'Kuota' => 50,
-            'Gedung' => 'E',
-        ]);
-        
-        DB::table('ruang')->insert(
-        [
-            'Nama_Ruang' => 'E103',
-            'Kuota' => 50,
-            'Gedung' => 'E',
-        ]);
-
-        DB::table('ruang')->insert(
-        [
-            'Nama_Ruang' => 'B101',
+            'Nama_Ruang' => 'B201',
             'Kuota' => 50,
             'Gedung' => 'B',
+            'Status' => 'setuju'
         ]);
 
         DB::table('ruang')->insert(
         [
-            'Nama_Ruang' => 'B102',
+            'Nama_Ruang' => 'B202',
             'Kuota' => 50,
             'Gedung' => 'B',
+            'Status' => 'setuju'
         ]);
 
         DB::table('ruang')->insert(
         [
-            'Nama_Ruang' => 'B103',
+            'Nama_Ruang' => 'A201',
             'Kuota' => 50,
-            'Gedung' => 'B',
+            'Gedung' => 'A',
+            'Status' => 'setuju'
         ]);
 
         DB::table('ruang')->insert(
         [
-            'Nama_Ruang' => 'B104',
+            'Nama_Ruang' => 'A202',
             'Kuota' => 50,
-            'Gedung' => 'B',
+            'Gedung' => 'A',
+            'Status' => 'setuju'
         ]);
 
 
