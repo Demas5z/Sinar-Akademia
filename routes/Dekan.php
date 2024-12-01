@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\DekanController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SesiController;
+
 
 //Route untuk Dekan
 Route::get('/persetujuan-dekan', function () {
