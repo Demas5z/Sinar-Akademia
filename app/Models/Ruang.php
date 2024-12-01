@@ -4,20 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
 class Ruang extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'Nama_Ruang',
-        'Kuota',
-        'Gedung'
-    ];
+    // Nama tabel
+    protected $table = 'ruang';
+
+    // Primary key
+    protected $primaryKey = 'Nama_Ruang';
+
+    // Kolom yang bisa diisi
+    protected $fillable = ['Nama_Ruang', 'Kuota', 'Gedung', 'Status'];
 }

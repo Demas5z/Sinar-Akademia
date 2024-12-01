@@ -15,6 +15,7 @@ return new class extends Migration
         $table->string('Nama_Ruang')->primary();
         $table->integer('Kuota')->nullable();
         $table->string('Gedung')->nullable();
+        $table->enum('Status', ['belum', 'setuju'])->default('belum');
     });
     }
 
