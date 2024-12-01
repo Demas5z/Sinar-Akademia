@@ -210,7 +210,7 @@
                 <i class="fas fa-graduation-cap"></i>
             </div>
             <div class="profile-card-content">
-                <h5>MAHASISWA</h5>
+                <h5>Rudi Ambatublow</h5>
                 <p>NIM: 24060122140177</p>
                 <p>INFORMATIKA S1</p>
             </div>
