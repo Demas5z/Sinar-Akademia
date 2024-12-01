@@ -33,18 +33,7 @@ class DummyUsersSeeder extends Seeder
                 'role'=>'PembimbingAkademik',
                 'password'=>bcrypt('123')
             ],
-            [
-                'name'=>'Mahasiswa',
-                'email'=>'Mahasiswa@gmail.com',
-                'role'=>'Mahasiswa',
-                'password'=>bcrypt('123')
-            ],
-            [
-                'name'=>'Dekan',
-                'email'=>'Dekan@gmail.com',
-                'role'=>'Dekan',
-                'password'=>bcrypt('123')
-            ],
+
 
         ];
 
