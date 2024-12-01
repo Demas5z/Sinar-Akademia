@@ -11,3 +11,7 @@ Route::get('/jadwal', function () {
 Route::get('/kaprodi/dashboard', function () {
     return view('kaprodi.dashboard');
 })->name('kaprodi.dashboard');
+
+Route::get('/verifikasi', function () {
+    return view('kaprodi.verifikasi');
+})->name('kaprodi.verifikasi');
