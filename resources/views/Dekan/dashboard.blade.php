@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sinar Akademia</title>
-    <link rel="stylesheet" href="{{ asset('css/dashboardPA.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Dekan/dashboardDekan.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -40,7 +40,7 @@
                 <div class="menu-icon">🎓</div>
                 <p>Perkuliahan</p>
             </div>
-            <div class="menu-card">
+            <div class="menu-card" onclick="redirectToPerwalian()">
                 <div class="menu-icon">👨‍👩‍👧‍👦</div>
                 <p>Perwalian</p>
             </div>
@@ -54,6 +54,9 @@
     <script>
         function redirectToPersetujuan() {
             window.location.href = "{{ route('persetujuan.dekan') }}";
+        }
+        function redirectToPerwalian() {
+            window.location.href = "{{ route('perwalian.PembimbingAkademik') }}";
         }
     </script>
 </body>
