@@ -15,63 +15,79 @@
     <x-navbar>Akademik</x-navbar>
 
     <div class="container">
-        <button class="back-btn" onclick="history.back()">← Back</button>
+        <a class="back-btn" href="/dashboard">← Back</a>
         <div class="header">
             <h2>Buat Daftar Ruangan</h2>
-            <div class="header-actions">
-                <button class="download-btn">Download Daftar</button>
-            </div>
         </div>
 
-        <div class="card">
-            <div class="accordion">
-                @foreach ($gedungs as $gedung)
-                    <div class="accordion-item">
-                        <div class="accordion-header" data-gedung="{{ $gedung }}">Gedung {{ $gedung }} <span class="status">▼</span></div>
-                        <div class="accordion-body">
-                            <div class="room">
-                                <span>Pilih Ruangan:</span>
-                                <select id="room-select-{{ strtolower($gedung) }}" name="Nama_Ruang">
-                                    <option value="">Pilih Ruangan</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+        <!-- Form untuk input data ruang -->
+        <div class="card" style="margin: 20px;">
+            <h3>Tambah Ruangan</h3>
+            <form id="room-form" method="POST" action="{{ route('create.ruang') }}">
+                @csrf
+                <div class="form-group">
+                    <label for="Nama_Ruang">Nama Ruangan:</label>
+                    <input type="text" id="Nama_Ruang" name="Nama_Ruang" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Kuota">Kuota:</label>
+                    <input type="number" id="Kuota" name="Kuota" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Gedung">Gedung:</label>
+                    <select id="Gedung" name="Gedung" required>
+                        <option value="">Pilih Gedung</option>
+                        @foreach ($gedungs as $gedung)
+                            <option value="{{ $gedung }}">{{ $gedung }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Tambah Ruangan</button>
+            </form>
         </div>
     </div>
 
     <script>
         $(document).ready(function () {
-            const endpoint = '/get-ruang'; // Update sesuai endpoint backend Anda
+            const endpoint = '/get-ruang'; // Endpoint backend untuk mendapatkan data ruangan
 
-            // Fetch ruangan dari backend
-            $.get(endpoint, function (data) {
-                if (Array.isArray(data) && data.length > 0) {
-                    const groupedRooms = data.reduce((acc, room) => {
-                        if (!acc[room.Gedung]) acc[room.Gedung] = [];
-                        acc[room.Gedung].push(room);
-                        return acc;
-                    }, {});
-
-                    Object.keys(groupedRooms).forEach(gedung => {
-                        const roomDropdown = $(`#room-select-${gedung.toLowerCase()}`);
-                        roomDropdown.empty().append('<option value="">Pilih Ruangan</option>');
-                        groupedRooms[gedung].forEach(room => {
-                            roomDropdown.append(`<option value="${room.Nama_Ruang}">${room.Nama_Ruang}</option>`);
-                        });
-                    });
-                } else {
-                    alert('Data ruangan kosong atau tidak valid.');
-                }
-            }).fail(function () {
-                alert('Gagal memuat data ruangan. Silakan coba lagi nanti.');
-            });
-
-            // Toggle accordion
+            // Event handler untuk toggle accordion dan load ruangan
             $('.accordion-header').on('click', function () {
                 const item = $(this).closest('.accordion-item');
+                const gedung = $(this).data('gedung');
+                const roomListContainer = $(`#room-list-${gedung.toLowerCase()}`);
+
+                if (!item.hasClass('loaded')) { // Cegah pemuatan ulang jika sudah pernah dimuat
+                    roomListContainer.html('<p>Memuat ruangan...</p>'); // Tampilkan pesan loading
+                    $.get(endpoint, function (data) {
+                        if (Array.isArray(data) && data.length > 0) {
+                            // Filter ruangan berdasarkan gedung dan status 'belum'
+                            const filteredRooms = data.filter(room => room.Gedung === gedung && room.Status === 'belum');
+                            roomListContainer.empty(); // Kosongkan list sebelumnya
+
+                            if (filteredRooms.length > 0) {
+                                const roomList = $('<ul></ul>');
+                                filteredRooms.forEach(room => {
+                                    roomList.append(`<li>${room.Nama_Ruang} (Status: ${room.Status})</li>`);
+                                });
+                                roomListContainer.append(roomList);
+                            } else {
+                                roomListContainer.html('<p>Tidak ada ruangan dengan status "belum" tersedia.</p>');
+                            }
+
+                            item.addClass('loaded'); // Tandai bahwa data telah dimuat
+                        } else {
+                            roomListContainer.html('<p>Data ruangan kosong atau tidak valid.</p>');
+                        }
+                    }).fail(function () {
+                        roomListContainer.html('<p>Gagal memuat data ruangan. Silakan coba lagi nanti.</p>');
+                    });
+                }
+
+                // Toggle accordion
                 item.toggleClass('active');
                 $('.accordion-item').not(item).removeClass('active');
             });

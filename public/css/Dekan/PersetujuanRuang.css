@@ -1,100 +1,48 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset CSS */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8;
+    box-sizing: border-box;
 }
 
-.container {
-    padding: 20px 40px;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
 }
 
-.container h2 {
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-.card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-/* Table Styling */
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.schedule-table th,
-.schedule-table td {
-    padding: 12px 20px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.schedule-table thead th {
-    background-color: #064e3b;
-    color: white;
-    text-align: center;
-}
-
-.schedule-table tbody tr:nth-child(odd) {
-    background-color: #d1fae5;
-}
-
-.schedule-table tbody tr:nth-child(even) {
-    background-color: #a7f3d0;
-}
-
-.schedule-table tbody td {
-    color: #333;
-    text-align: center;
-}
-
-/* Button Styling */
-.action-buttons {
+/* Navbar */
+nav {
+    background-color: #009688;
+    padding: 10px 20px;
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
 }
 
-.btn {
-    padding: 8px 12px;
-    font-size: 14px;
+nav .back-btn {
+    background-color: #ffffff;
+    color: #009688;
     border: none;
-    border-radius: 5px;
+    padding: 8px 16px;
     cursor: pointer;
-    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-.btn-open {
-    background-color: #4a90e2;
+nav .back-btn:hover {
+    background-color: #e0f2f1;
 }
 
-.btn-open:hover {
-    background-color: #3b78c1;
-}
-
-.btn-approve {
-    background-color: #38b8a4;
-}
-
-.btn-approve:hover {
-    background-color: #2aa890;
-}
-
-.btn-reject {
-    background-color: #d9534f;
-}
-
-.btn-reject:hover {
-    background-color: #c9302c;
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Back Button Styling */
@@ -114,4 +62,91 @@ body {
 
 .back-btn:hover {
     background-color: #2c9c8d;
+}
+
+/* Title */
+.title h2 {
+    font-size: 28px;
+    color: #009688;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Accordion */
+.accordion {
+    margin-bottom: 20px;
+}
+
+.accordion-item {
+    background-color: #e0f2f1;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #b2dfdb;
+}
+
+.accordion-body {
+    padding: 15px;
+    display: none;
+    background-color: #ffffff;
+    border-radius: 0 0 6px 6px;
+}
+
+.accordion-item.active .accordion-body {
+    display: block;
+}
+
+/* Room List */
+.room-list {
+    margin-top: 10px;
+}
+
+.room-list ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.room-list li {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-list li button {
+    background-color: #009688;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.room-list li button:hover {
+    background-color: #00796b;
+}
+
+/* Status Text */
+.room-list li span {
+    font-size: 14px;
+    color: #757575;
 }
