@@ -20,7 +20,7 @@
         <div class="calendar-container">  
             <!-- Left Column - Course Selector -->  
             <div class="course-selector">  
-                <div class="select-block">  
+            <div class="select-block">  
                     <label for="semester">Pilih Semester</label>  
                     <div class="select-wrapper">  
                         <select id="semester">  
@@ -34,7 +34,7 @@
                             <option value="8">Semester 8</option>  
                         </select>  
                     </div>  
-                </div>  
+                </div>
 
                 <div class="select-block">  
                     <label for="course">Pilih Mata Kuliah</label>  
@@ -58,20 +58,35 @@
                 </div>  
 
                 <div class="select-block">  
-                    <label for="class">Pilih Jumlah Kelas</label>  
+                    <label for="class">Pilih Kelas</label>  
                     <div class="select-wrapper">  
                         <select id="class">  
-                            <option value="1">1 Kelas</option>  
-                            <option value="2">2 Kelas</option>  
-                            <option value="3">3 Kelas</option>  
-                            <option value="4">4 Kelas</option>  
+                            <option value="1">A</option>  
+                            <option value="2">B</option>  
+                            <option value="3">C</option>  
+                            <option value="4">D</option>
+                            <option value="5">E</option>  
                         </select>  
                     </div>  
                 </div>  
 
+                <!-- Pilih Ruangan -->
+                <div class="select-block">  
+                    <label for="room">Pilih Ruangan</label>  
+                    <div class="select-wrapper">  
+                        <select id="room" name="room">
+                            <option value="">-- Pilih Ruangan --</option>  
+                            @foreach($ruangan as $room)
+                                <option value="{{ $room->id }}">{{ $room->Nama_Ruang }}</option>
+                            @endforeach
+                        </select>  
+                    </div>  
+                </div>
+
+
                 <!-- Add Button -->  
                 <section class="status-section">  
-                    <button class="save-button" id="addButton">Add</button>  
+                    <button class="save-button" id="saveButton">Save</button>  
                 </section>  
 
                 <!-- Selected Schedule List -->  
@@ -98,16 +113,18 @@
                         // Generate time slots from 07:00 to 18:00  
                         $startTime = 7;  
                         $endTime = 18;  
-                        for ($hour = $startTime; $hour <= $endTime; $hour++):   
-                            $time = sprintf("%02d:00", $hour);  
-                        ?>  
+                        for ($hour = $startTime; $hour < $endTime; $hour++):   
+                            $startTimeFormatted = sprintf("%02d:00", $hour);  
+                            $endTimeFormatted = sprintf("%02d:00", $hour + 1);  
+                            $timeRange = $startTimeFormatted . " - " . $endTimeFormatted;  
+                        ?>   
                             <tr>
-                                <td><?= $time ?></td>
-                                <td><button class="add-button" data-day="senin" data-time="<?= $time ?>">Tambah</button></td>
-                                <td><button class="add-button" data-day="selasa" data-time="<?= $time ?>">Tambah</button></td>
-                                <td><button class="add-button" data-day="rabu" data-time="<?= $time ?>">Tambah</button></td>
-                                <td><button class="add-button" data-day="kamis" data-time="<?= $time ?>">Tambah</button></td>
-                                <td><button class="add-button" data-day="jumat" data-time="<?= $time ?>">Tambah</button></td>
+                                <td><?= $timeRange ?></td>
+                                <td><button class="add-button" data-day="senin" data-time="<?= $timeRange ?>">Tambah</button></td>
+                                <td><button class="add-button" data-day="selasa" data-time="<?= $timeRange ?>">Tambah</button></td>
+                                <td><button class="add-button" data-day="rabu" data-time="<?= $timeRange ?>">Tambah</button></td>
+                                <td><button class="add-button" data-day="kamis" data-time="<?= $timeRange ?>">Tambah</button></td>
+                                <td><button class="add-button" data-day="jumat" data-time="<?= $timeRange ?>">Tambah</button></td>
                             </tr>
                         <?php endfor; ?>
                     </tbody>
@@ -177,6 +194,12 @@
     // Set default value untuk Semester agar mata kuliah muncul saat halaman pertama kali dimuat
     document.getElementById("semester").dispatchEvent(new Event("change"));
 
+    document.getElementById('ruangan').addEventListener('change', function() {
+        var selectedRoom = this.value;
+        console.log('Ruangan yang dipilih: ' + selectedRoom);
+    });
+    
+
     // Fungsi untuk menambahkan mata kuliah ke jadwal
     document.querySelectorAll(".add-button").forEach(function(button) {
         button.addEventListener("click", function() {
@@ -210,6 +233,7 @@
             }
         });
     });
+    
 </script>
 
 
