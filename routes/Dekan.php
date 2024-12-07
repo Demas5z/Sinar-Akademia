@@ -11,6 +11,9 @@ Route::get('/persetujuan-dekan', function () {
 Route::get('/persetujuan-jadwal-dekan', function () {
     return view('Dekan.PersetujuanJadwal');
 })->name('persetujuan.jadwal.dekan');
-Route::get('/persetujuan-ruang-dekan', function () {
-    return view('Dekan.PersetujuanRuangan');
-})->name('persetujuan.ruang.dekan');
+
+Route::get('/persetujuan-ruang-dekan', [DekanController::class, 'tampilDaftarRuang'])->name('persetujuan.ruang.dekan');
+
+Route::get('/get-ruang', [DekanController::class, 'getRuang'])->name('get.ruang');
+
+Route::post('/update-status-ruang', [DekanController::class, 'updateStatusRuang'])->name('update.status.ruang');
