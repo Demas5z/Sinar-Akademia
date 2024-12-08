@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
 </head>  
 <body>  
-    <x-navbar>Akademik</x-navbar>  
+    <x-navbar>Bagian Akademik</x-navbar>  
 
     <div class="container">  
         <a class="back-btn" href="/dashboard">← Back</a>  
@@ -21,7 +21,7 @@
         @endif  
 
         <!-- Form untuk input data ruang -->  
-        <div class="card" style="margin: 20px;">  
+        <div class="card" style="margin-top: 20px;">  
             <h3>Tambah Ruangan</h3>  
             <form id="room-form" method="POST" action="{{ route('create.ruang') }}">  
                 @csrf  

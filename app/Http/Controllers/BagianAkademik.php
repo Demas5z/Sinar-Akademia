@@ -8,12 +8,12 @@ class BagianAkademik extends Controller
 {
     // Menampilkan daftar ruang
     public function daftarRuang()
-{
-    // Mengambil semua data ruang dari database
-    $ruangs = Ruang::all();
+    {
+        // Mengambil semua data ruang dari database
+        $ruangs = Ruang::all();
 
-    return view('Akademik.DaftarRuang', compact('ruangs'));
-}
+        return view('Akademik.DaftarRuang', compact('ruangs'));
+    }
 
 
     // Menampilkan form untuk membuat daftar ruang
@@ -26,12 +26,12 @@ class BagianAkademik extends Controller
     public function createRuang(Request $request)  
     {  
         $validated = $request->validate([  
-            'Nama_Ruang' => 'required|string|max:255|unique:ruang,Nama_Ruang',  
+            'Nama_Ruang' => 'required|string|max:255|unique:ruangs,Nama_Ruang',  
             'Kuota' => 'required|integer',  
             'Prodi' => 'required|string|max:255',  
         ]);  
     
-        $ruang = Ruang::create([  
+        $ruangs = Ruang::create([  
             'Nama_Ruang' => $validated['Nama_Ruang'],  
             'Kuota' => $validated['Kuota'],  
             'Prodi' => $validated['Prodi'],  
@@ -42,7 +42,7 @@ class BagianAkademik extends Controller
         return response()->json([  
             'success' => true,  
             'message' => 'Ruangan berhasil ditambahkan!',  
-            'data' => $ruang // Kembalikan data ruang yang baru ditambahkan  
+            'data' => $ruangs // Kembalikan data ruang yang baru ditambahkan  
         ]);  
     }
 
