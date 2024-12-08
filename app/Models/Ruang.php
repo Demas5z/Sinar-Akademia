@@ -1,23 +1,25 @@
-<?php
+<?php  
 
-namespace App\Models;
+namespace App\Models;  
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;  
+use Illuminate\Database\Eloquent\Model;  
 
-class Ruang extends Model
-{
-    use HasFactory, Notifiable;
+class Ruang extends Model  
+{  
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'Nama_Ruang',
-        'Kuota',
-        'Gedung'
-    ];
+    protected $table = 'ruangs';
+
+    protected $primaryKey = 'Nama_Ruang'; // Menetapkan Nama_Ruang sebagai primary key
+
+    protected $fillable = ['Nama_Ruang', 'Kuota', 'Prodi', 'Status'];
+
+    public $incrementing = false; // Karena primary key bukan auto-increment
+
+    // Relasi dengan tabel jadwal
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class, 'ruangan', 'Nama_Ruang');
+    }
 }

@@ -15,10 +15,24 @@ body {
     padding: 20px;
 }
 
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-icon {
+    font-size: 24px;
+}
+
+.user-role {
+    font-size: 16px;
+}
+
 /* Profile Card */
 .profile-card {
     display: flex;
-    background: #2cc0cf;
+    background: linear-gradient(135deg, #20b2aa, #008080);
     border-radius: 10px;
     color: white;
     padding: 20px;

@@ -1,17 +1,45 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Ruang;
+use Illuminate\Support\Facades\Log;
 
 class DekanController extends Controller
 {
-    public function index()
+    // Menampilkan daftar ruangan yang perlu disetujui oleh dekan
+    public function tampilDaftarRuang()
     {
-        // Ambil data user dengan role 'Dekan'
-        $user = User::where('role', 'Dekan')->first();
-
-        return view('Dekan.Dashboard', compact('user'));
+        $ruangs = Ruang::where('Status', 'belum')->get(); // Ambil ruang yang statusnya 'belum'
+        return view('Dekan.PersetujuanRuangan', compact('ruangs')); // Kirim data ke view dengan nama $ruangs
     }
-}
 
+    // Mengupdate status ruangan menjadi 'setuju'
+    public function updateStatusRuang(Request $request)
+{
+    // Validasi input
+    $request->validate([
+        'Nama_Ruang' => 'required|string'
+    ]);
+
+    // Cari ruang berdasarkan Nama_Ruang (sesuai dengan kolom di database)
+    $ruang = Ruang::where('Nama_Ruang', $request->Nama_Ruang)->first();
+
+    if (!$ruang) {
+        return response()->json(['status' => 'error', 'message' => 'Ruang tidak ditemukan.'], 404);
+    }
+
+    // Pastikan ruang belum disetujui
+    if ($ruang->Status !== 'belum') {
+        return response()->json(['status' => 'error', 'message' => 'Ruang sudah disetujui sebelumnya.'], 400);
+    }
+
+    // Perbarui status ruang menjadi 'setuju'
+    $ruang->Status = 'setuju';
+    $ruang->save();
+
+    // Kirim respons sukses
+    return response()->json(['status' => 'success', 'message' => 'Ruang berhasil disetujui.']);
+}
+}

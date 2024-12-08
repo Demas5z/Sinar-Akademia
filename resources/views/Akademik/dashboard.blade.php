@@ -40,10 +40,6 @@
                 <div class="menu-icon">🏛️</div>
                 <p>Daftar Ruangan</p>
             </div>
-            <div class="menu-card" onclick="redirectToBuatDaftarRuang()">
-                <div class="menu-icon">📝</div>
-                <p>Buat Daftar Ruang</p>
-            </div>
         </section>
     </main>
     <script>
@@ -51,9 +47,6 @@
             window.location.href = "{{ route('daftar.ruang') }}";
         }
 
-        function redirectToBuatDaftarRuang() {
-            window.location.href = "{{ route('buat.daftar.ruang') }}";
-        }
 
         function redirectTodashboard() {
             window.location.href = "{{ route('dashboard') }}";

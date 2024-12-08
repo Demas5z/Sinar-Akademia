@@ -1,103 +1,33 @@
+/* General Styling */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f0f4f8;
+    font-family: Arial, sans-serif;
+    background-color: #f2f4f8;
+    color: #333;
 }
 
 .container {
-    padding: 20px 40px;
-}
-
-.container h2 {
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-.card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    max-width: 1200px;
+    margin: auto;
 }
 
-/* Table Styling */
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.schedule-table th,
-.schedule-table td {
-    padding: 12px 20px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.schedule-table thead th {
-    background-color: #064e3b;
+/* Navbar */
+.navbar {
+    background: linear-gradient(to right, #2cc0cf, #38b8a4);
     color: white;
-    text-align: center;
-}
-
-.schedule-table tbody tr:nth-child(odd) {
-    background-color: #d1fae5;
-}
-
-.schedule-table tbody tr:nth-child(even) {
-    background-color: #a7f3d0;
-}
-
-.schedule-table tbody td {
-    color: #333;
-    text-align: center;
-}
-
-/* Button Styling */
-.action-buttons {
+    padding: 10px 20px;
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.btn {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.btn-open {
-    background-color: #4a90e2;
-}
-
-.btn-open:hover {
-    background-color: #3b78c1;
-}
-
-.btn-approve {
-    background-color: #38b8a4;
-}
-
-.btn-approve:hover {
-    background-color: #2aa890;
-}
-
-.btn-reject {
-    background-color: #d9534f;
-}
-
-.btn-reject:hover {
-    background-color: #c9302c;
-}
-
-/* Back Button Styling */
+/* Back Button */
 .back-btn {
     display: inline-block;
     margin-bottom: 20px;
@@ -114,4 +44,126 @@ body {
 
 .back-btn:hover {
     background-color: #2c9c8d;
+}
+
+/*Aprove button*/
+.approve-all-btn {
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    font-size: 14px;
+    background-color: #009688;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 90%;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.approve-all-btn:hover {
+    background-color: #00796b;
+    transform: translateY(-2px);
+}
+
+/* Header */
+h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+    text-align: left;
+    color: #333;
+}
+
+/* Alert */
+.alert {
+    display: none;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Card */
+.card {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Table */
+#ruang-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#ruang-table th, #ruang-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+}
+
+#ruang-table th {
+    background-color: #38b8a4;
+    color: white;
+    font-weight: bold;
+}
+
+#ruang-table td {
+    background-color: #f9f9f9;
+}
+
+#ruang-table tr:hover td {
+    background-color: #f1f1f1;
+}
+
+/* Button: Approve */
+.approve-btn {
+    padding: 8px 12px;
+    background-color: #009688;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.approve-btn:hover {
+    background-color: #00796b;
+    transform: translateY(-2px);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #ruang-table th, #ruang-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .back-btn {
+        width: 100%;
+    }
 }

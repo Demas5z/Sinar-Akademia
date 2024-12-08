@@ -67,9 +67,9 @@
                 </div>
             </div>
             <div class="menu-wrapper">
-                <div class="menu-card">
-                    <div class="icon">✅</div>
-                    <p>Verifikasi IRS</p>
+                <div class="menu-card"onclick="redirectToBuatJadwal()">
+                    <div class="icon">🗒️</div>
+                    <p>Buat Jadwal</p>
                 </div>
             </div>
         </section>
@@ -92,4 +92,8 @@
         function redirectToJadwal() {
             window.location.href = "{{ route('kaprodi.jadwal') }}";
         }
+        function redirectToBuatJadwal() {
+            window.location.href = "{{ route('kaprodi.buatmatkul') }}";
+        }
     </script>
+    
