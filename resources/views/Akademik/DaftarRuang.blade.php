@@ -1,79 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinar Akademia - Daftar Ruangan</title>
-    <link rel="stylesheet" href="{{ asset('css/Akademik/DaftarRuang.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <x-navbar>Bagian Akademik</x-navbar>
-    
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Sinar Akademia - Daftar Ruangan</title>  
+    <link rel="stylesheet" href="{{ asset('css/Akademik/BuatDaftarRuang.css') }}">  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+</head>  
+<body>  
+    <x-navbar>Akademik</x-navbar>  
 
-    <div class="container">
-        <button class="back-btn" onclick="history.back()">← Back</button>
+    <div class="container">  
+        <a class="back-btn" href="/dashboard">← Back</a>  
 
-        <div class="title">
-            <h2>Daftar Ruang</h2>
-        </div>
-        <div class="card">
-            <div class="accordion">
-                @foreach ($gedungs as $gedung)
-                    <div class="accordion-item">
-                        <div class="accordion-header" data-gedung="{{ $gedung }}">Gedung {{ $gedung }} <span class="status">▼</span></div>
-                        <div class="accordion-body">
-                            <div class="room-list" id="room-list-{{ strtolower($gedung) }}">
-                                <p>Memuat ruangan...</p> <!-- Placeholder sementara -->
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <script>
-        $(document).ready(function () {
-            const endpoint = '/get-ruang'; // Endpoint backend untuk mendapatkan data ruangan
+        <!-- Tampilkan pesan sukses -->  
+        @if(session('success'))  
+            <div class="alert alert-success">  
+                {{ session('success') }}  
+            </div>  
+        @endif  
 
-            // Event handler untuk toggle accordion dan load ruangan
-            $('.accordion-header').on('click', function () {
-                const item = $(this).closest('.accordion-item');
-                const gedung = $(this).data('gedung');
-                const roomListContainer = $(`#room-list-${gedung.toLowerCase()}`);
+        <!-- Form untuk input data ruang -->  
+        <div class="card" style="margin: 20px;">  
+            <h3>Tambah Ruangan</h3>  
+            <form id="room-form" method="POST" action="{{ route('create.ruang') }}">  
+                @csrf  
+                <div class="form-group">  
+                    <label for="Nama_Ruang">Nama Ruangan:</label>  
+                    <input type="text" id="Nama_Ruang" name="Nama_Ruang" required>  
+                </div>  
 
-                if (!item.hasClass('loaded')) { // Cegah pemuatan ulang jika sudah pernah dimuat
-                    roomListContainer.html('<p>Memuat ruangan...</p>'); // Tampilkan pesan loading
-                    $.get(endpoint, function (data) {
-                        if (Array.isArray(data) && data.length > 0) {
-                            // Filter ruangan berdasarkan gedung dan status 'belum'
-                            const filteredRooms = data.filter(room => room.Gedung === gedung && room.Status === 'setuju');
-                            roomListContainer.empty(); // Kosongkan list sebelumnya
+                <div class="form-group">  
+                    <label for="Kuota">Kuota:</label>  
+                    <input type="number" id="Kuota" name="Kuota" required>  
+                </div>  
 
-                            if (filteredRooms.length > 0) {
-                                const roomList = $('<ul></ul>');
-                                filteredRooms.forEach(room => {
-                                    roomList.append(`<li>${room.Nama_Ruang} (Status: ${room.Status})</li>`);
-                                });
-                                roomListContainer.append(roomList);
-                            } else {
-                                roomListContainer.html('<p>Tidak ada ruangan yang tersedia.</p>');
-                            }
+                <div class="form-group">  
+                    <label for="Prodi">Program Studi:</label>  
+                    <input type="text" id="Prodi" name="Prodi" required placeholder="Masukkan nama Prodi">  
+                </div>  
 
-                            item.addClass('loaded'); // Tandai bahwa data telah dimuat
-                        } else {
-                            roomListContainer.html('<p>Data ruangan kosong atau tidak valid.</p>');
-                        }
-                    }).fail(function () {
-                        roomListContainer.html('<p>Gagal memuat data ruangan. Silakan coba lagi nanti.</p>');
-                    });
-                }
+                <button type="submit" class="submit-btn">Tambah Ruangan</button>  
+            </form>  
+        </div>  
 
-                // Toggle accordion
-                item.toggleClass('active');
-                $('.accordion-item').not(item).removeClass('active');
-            });
-        });
-    </script>
-</body>
+        <!-- Tabel untuk menampilkan data ruangan -->  
+        <div class="card" style="margin-top: 40px;">  
+            <h3>Daftar Ruangan</h3>  
+            <table id="ruang-table" border="1" cellspacing="0" cellpadding="10">  
+                <thead>  
+                    <tr>  
+                        <th>Nama Ruangan</th>  
+                        <th>Kuota</th>  
+                        <th>Program Studi</th>  
+                        <th>Status</th>  
+                    </tr>  
+                </thead>  
+                <tbody>  
+                    @foreach ($ruangs as $ruang)  
+                        <tr>  
+                            <td>{{ $ruang->Nama_Ruang }}</td>  
+                            <td>{{ $ruang->Kuota }}</td>  
+                            <td>{{ $ruang->Prodi }}</td>  
+                            <td>{{ $ruang->Status }}</td>  
+                        </tr>  
+                    @endforeach  
+                </tbody>  
+            </table>  
+        </div>  
+    </div>  
+
+    <script>   
+    $(document).ready(function () {  
+        $('#room-form').on('submit', function (e) {  
+            e.preventDefault(); // Mencegah form untuk submit secara normal  
+
+            // Ambil data form  
+            let formData = $(this).serialize();  
+
+            // Kirim data ke server via POST  
+            $.post("{{ route('create.ruang') }}", formData, function (data) {  
+                if (data.success) {  
+                    // Jika sukses, tampilkan pesan  
+                    alert(data.message);  
+
+                    // Tambahkan data baru ke tabel  
+                    let newRow = `  
+                        <tr>  
+                            <td>${data.data.Nama_Ruang}</td>  
+                            <td>${data.data.Kuota}</td>  
+                            <td>${data.data.Prodi}</td>  
+                            <td>${data.data.Status}</td>  
+                        </tr>  
+                    `;  
+                    $('#ruang-table tbody').append(newRow);  
+
+                    // Reset form  
+                    $('#room-form')[0].reset();  
+                } else {  
+                    alert("Gagal menambahkan ruangan.");  
+                }  
+            }).fail(function (xhr, status, error) {  
+                // Jika gagal, tampilkan error  
+                alert("Terjadi kesalahan: " + error);  
+            });  
+        });  
+    });   
+    </script>  
+</body>  
 </html>

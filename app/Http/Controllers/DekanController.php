@@ -1,44 +1,45 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use App\Models\Ruang;
+use Illuminate\Support\Facades\Log;
 
 class DekanController extends Controller
 {
-    public function getRuang()
-    {
-        $data = DB::table('ruang')->get(); // Mengambil data dari tabel ruang
-        return response()->json($data);
-    }
-
+    // Menampilkan daftar ruangan yang perlu disetujui oleh dekan
     public function tampilDaftarRuang()
     {
-        // Mengambil data distinct gedung
-        $gedungs = DB::table('ruang')->select('Gedung')->distinct()->pluck('Gedung');
-        
-        // Kirimkan data gedung ke view
-        return view('Dekan.PersetujuanRuangan', compact('gedungs'));
+        $ruangs = Ruang::where('Status', 'belum')->get(); // Ambil ruang yang statusnya 'belum'
+        return view('Dekan.PersetujuanRuangan', compact('ruangs')); // Kirim data ke view dengan nama $ruangs
     }
 
+    // Mengupdate status ruangan menjadi 'setuju'
     public function updateStatusRuang(Request $request)
-    {
-        $namaRuang = $request->input('Nama_Ruang');
-        
-        $ruang = DB::table('ruang')->where('Nama_Ruang', $namaRuang)->first();
-        
-        if ($ruang) {
-            DB::table('ruang')
-                ->where('Nama_Ruang', $namaRuang)
-                ->update(['Status' => 'setuju']);
-            
-            return response()->json(['success' => true, 'message' => 'Status ruang berhasil diperbarui.']);
-        }
-        
-        return response()->json(['success' => false, 'message' => 'Ruangan tidak ditemukan.']);
+{
+    // Validasi input
+    $request->validate([
+        'Nama_Ruang' => 'required|string'
+    ]);
+
+    // Cari ruang berdasarkan Nama_Ruang (sesuai dengan kolom di database)
+    $ruang = Ruang::where('Nama_Ruang', $request->Nama_Ruang)->first();
+
+    if (!$ruang) {
+        return response()->json(['status' => 'error', 'message' => 'Ruang tidak ditemukan.'], 404);
     }
 
-    
-}
+    // Pastikan ruang belum disetujui
+    if ($ruang->Status !== 'belum') {
+        return response()->json(['status' => 'error', 'message' => 'Ruang sudah disetujui sebelumnya.'], 400);
+    }
 
+    // Perbarui status ruang menjadi 'setuju'
+    $ruang->Status = 'setuju';
+    $ruang->save();
+
+    // Kirim respons sukses
+    return response()->json(['status' => 'success', 'message' => 'Ruang berhasil disetujui.']);
+}
+}

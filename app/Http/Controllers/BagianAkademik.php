@@ -1,52 +1,49 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Ruang;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class BagianAkademik extends Controller
 {
+    // Menampilkan daftar ruang
+    public function daftarRuang()
+{
+    // Mengambil semua data ruang dari database
+    $ruangs = Ruang::all();
+
+    return view('Akademik.DaftarRuang', compact('ruangs'));
+}
+
+
+    // Menampilkan form untuk membuat daftar ruang
     public function buatDaftarRuang()
     {
-        // Mengambil data distinct gedung
-        $gedungs = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
-        
-        // Kirimkan data gedung ke view
-        return view('Akademik.BuatDaftarRuang', compact('gedungs'));
+        return view('Akademik.BuatDaftarRuang');
     }
 
-    public function getRuang()
-    {
-        $data = DB::table('ruang')->get(); // Mengambil data dari tabel ruang
-        return response()->json($data);
-    }
-
-    public function createRuang(Request $request)
-    {
-        $validatedData = $request->validate([
-        'Nama_Ruang' => 'required|string|max:255',
-        'Kuota' => 'required|integer|min:1',
-        'Gedung' => ['required', 'string', 'max:1', 'uppercase'],
-        ]);
-
-        // Tambahkan nilai default untuk Status
-        $validatedData['Status'] = 'belum';
-
-        // Insert data ke database
-        Ruang::create($validatedData);
-
-        return redirect()->back()->with('success', 'Ruangan berhasil ditambahkan!');
-    }
-
-    public function tampilDaftarRuang()
-    {
-        // Mengambil data distinct gedung
-        $gedungs = DB::table('ruang')->select('Gedung')->distinct()->pluck('Gedung');
-        
-        // Kirimkan data gedung ke view
-        return view('Akademik.DaftarRuang', compact('gedungs'));
+    // Menambahkan ruang ke dalam database
+    public function createRuang(Request $request)  
+    {  
+        $validated = $request->validate([  
+            'Nama_Ruang' => 'required|string|max:255|unique:ruang,Nama_Ruang',  
+            'Kuota' => 'required|integer',  
+            'Prodi' => 'required|string|max:255',  
+        ]);  
+    
+        $ruang = Ruang::create([  
+            'Nama_Ruang' => $validated['Nama_Ruang'],  
+            'Kuota' => $validated['Kuota'],  
+            'Prodi' => $validated['Prodi'],  
+            'Status' => 'belum', // default status  
+        ]);  
+    
+        // Kembalikan response sukses dalam format JSON  
+        return response()->json([  
+            'success' => true,  
+            'message' => 'Ruangan berhasil ditambahkan!',  
+            'data' => $ruang // Kembalikan data ruang yang baru ditambahkan  
+        ]);  
     }
 
 }

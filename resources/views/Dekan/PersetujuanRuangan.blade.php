@@ -3,100 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengajuan Jadwal Kuliah</title>
-    <link rel="stylesheet" href="{{ asset('css/Dekan/PersetujuanRuang.css') }}">
+    <title>Persetujuan Ruangan - Dekan</title>
+    <link rel="stylesheet" href="{{ asset('css/Akademik/PersetujuanRuang.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        /* (Include the CSS changes mentioned above) */
+    </style>
 </head>
 <body>
     <x-navbar>Dekan</x-navbar>
 
-    
     <div class="container">
         <button class="back-btn" onclick="history.back()">← Back</button>
+        <h2>🏛️ Persetujuan Ruangan</h2>
 
-        <div class="title">
-            <h2>🏛️ Pengajuan Ruangan</h2>
-        </div>
+        <div class="alert"></div> <!-- Tempat untuk pesan sukses/gagal -->
+
         <div class="card">
-            <div class="accordion">
-                @foreach ($gedungs as $gedung)
-                    <div class="accordion-item">
-                        <div class="accordion-header" data-gedung="{{ $gedung }}">Gedung {{ $gedung }} <span class="status">▼</span></div>
-                        <div class="accordion-body">
-                            <div class="room-list" id="room-list-{{ strtolower($gedung) }}">
-                                <p>Memuat ruangan...</p> <!-- Placeholder sementara -->
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <table id="ruang-table">
+                <thead>
+                    <tr>
+                        <th>Nama Ruangan</th>
+                        <th>Kuota</th>
+                        <th>Program Studi</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($ruangs as $ruang)
+                        <tr>
+                            <td>{{ $ruang->Nama_Ruang }}</td>
+                            <td>{{ $ruang->Kuota }}</td>
+                            <td>{{ $ruang->Prodi }}</td>
+                            <td>{{ $ruang->Status }}</td>
+                            <td>
+                                @if($ruang->Status == 'belum')
+                                    <button class="approve-btn" data-nama_ruang="{{ $ruang->Nama_Ruang }}">Setujui</button>
+                                @else
+                                    Sudah disetujui
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
+
     <script>
-        $(document).ready(function () {
-            const endpoint = '/get-ruang'; // Endpoint untuk mendapatkan data ruangan
-            const updateEndpoint = '/update-status-ruang'; // Endpoint untuk update status
 
-            // Event handler untuk toggle accordion dan load ruangan
-            $('.accordion-header').on('click', function () {
-                const item = $(this).closest('.accordion-item');
-                const gedung = $(this).data('gedung');
-                const roomListContainer = $(`#room-list-${gedung.toLowerCase()}`);
+    $(document).ready(function () {
+        // Ketika tombol Setujui diklik
+        $('.approve-btn').click(function () {
+            var namaRuang = $(this).data('nama_ruang');  // Mengambil data-nama_ruang
+            
+            // Tampilkan konfirmasi dan pastikan pengguna yakin
+            if (confirm("Apakah Anda yakin ingin menyetujui ruang: " + namaRuang + "?")) {
+                // Kirim request AJAX untuk menyetujui ruang
+                $.ajax({
+                    url: "{{ route('update.status.ruang') }}", // Menggunakan route yang sudah ada
+                    method: "POST",
+                    data: {
+                        _token: $("meta[name='csrf-token']").attr('content'), // CSRF Token
+                        Nama_Ruang: namaRuang  // Menggunakan 'Nama_Ruang' untuk sesuai dengan kolom di database
+                    },
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            // Update status pada tabel
+                            $('tr').each(function () {
+                                if ($(this).find('td:first').text() === namaRuang) {
+                                    $(this).find('td:nth-child(4)').text('setuju'); // Update kolom status
+                                    $(this).find('td:nth-child(5)').text(''); // Menghapus tombol Setujui
+                                }
+                            });
 
-                if (!item.hasClass('loaded')) {
-                    roomListContainer.html('<p>Memuat ruangan...</p>'); // Tampilkan pesan loading
-                    $.get(endpoint, function (data) {
-                        console.log(data); // Memeriksa data yang diterima
-                        if (Array.isArray(data) && data.length > 0) {
-                            const filteredRooms = data.filter(room => room.Gedung === gedung && room.Status === 'belum');
-                            roomListContainer.empty(); // Kosongkan list sebelumnya
-
-                            if (filteredRooms.length > 0) {
-                                const roomList = $('<ul></ul>');
-                                filteredRooms.forEach(room => {
-                                    const roomItem = $(`
-                                        <li>
-                                            ${room.Nama_Ruang}
-                                            <button class="approve-btn" data-Nama_Ruang="${room.Nama_Ruang}">Setujui</button>
-                                        </li>
-                                    `);
-
-                                    roomItem.find('.approve-btn').on('click', function () {
-                                        const namaRuang = $(this).data('Nama_Ruang');
-                                        $.post(updateEndpoint, { nama_ruang: namaRuang }, function (response) {
-                                            if (response.success) {
-                                                alert(response.message);
-                                                roomItem.remove(); // Hapus elemen setelah berhasil
-                                            } else {
-                                                alert(response.message);
-                                            }
-                                        }).fail(function () {
-                                            alert('Gagal memperbarui status. Silakan coba lagi.');
-                                        });
-                                    });
-
-                                    roomList.append(roomItem);
-                                });
-                                roomListContainer.append(roomList);
-                            } else {
-                                roomListContainer.html('<p>Tidak ada ruangan yang tersedia.</p>');
-                            }
-
-                            item.addClass('loaded'); // Tandai bahwa data telah dimuat
+                            // Tampilkan pesan sukses
+                            showAlert('Persetujuan berhasil!', 'success');
                         } else {
-                            roomListContainer.html('<p>Data ruangan kosong atau tidak valid.</p>');
+                            showAlert(response.message, 'error'); // Menampilkan pesan error jika ada
                         }
-                    }).fail(function () {
-                        roomListContainer.html('<p>Gagal memuat data ruangan. Silakan coba lagi nanti.</p>');
-                    });
+                    },
+                    error: function () {
+                        showAlert('Terjadi kesalahan saat menyetujui ruang!', 'error');
+                    }
+                });
+            }
+        });
 
-                }
-                // Toggle accordion
-                item.toggleClass('active');
-                $('.accordion-item').not(item).removeClass('active');
-            });
-        
-});
-    </script>
+        // Fungsi untuk menampilkan alert
+        function showAlert(message, type) {
+            var alertBox = $('.alert');
+            alertBox.text(message);
+            alertBox.removeClass('alert-success alert-error').addClass('alert-' + type);
+            alertBox.show();
+            setTimeout(function () {
+                alertBox.fadeOut();
+            }, 3000);
+        }
+    });
+</script>
+
 </body>
 </html>
