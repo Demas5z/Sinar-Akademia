@@ -36,14 +36,6 @@
         </section>
 
         <section class="menu-section">
-            <div class="menu-card">
-                <div class="menu-icon">🎓</div>
-                <p>Perkuliahan</p>
-            </div>
-            <div class="menu-card" onclick="redirectToPerwalian()">
-                <div class="menu-icon">👨‍👩‍👧‍👦</div>
-                <p>Perwalian</p>
-            </div>
             <div class="menu-card" onclick="redirectToPersetujuan()">
                 <div class="menu-icon">📖</div>
                 <p>Persetujuan</p>
@@ -54,9 +46,6 @@
     <script>
         function redirectToPersetujuan() {
             window.location.href = "{{ route('persetujuan.dekan') }}";
-        }
-        function redirectToPerwalian() {
-            window.location.href = "{{ route('perwalian.PembimbingAkademik') }}";
         }
     </script>
 </body>

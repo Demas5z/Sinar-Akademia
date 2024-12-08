@@ -38,14 +38,11 @@ class MataKuliahController extends Controller
             ]);
 
             // Mengembalikan response sukses dengan data yang baru disimpan
-            return response()->json([
-                'success' => true,
-                'message' => 'Mata kuliah berhasil disimpan!',
-                'data' => $mataKuliah
-            ]);
+            return redirect()->route('mata-kuliah.index')->with(['success' => true, 'Mata kuliah berhasil disimpan!']);
+
         } catch (\Exception $e) {
             // Jika terjadi error saat menyimpan, tangani error dan beri pesan
-            return response()->json(['success' => false, 'message' => 'Gagal menyimpan mata kuliah. ' . $e->getMessage()], 500);
+            return redirect()->route('mata-kuliah.index')->with(['success' => false, 'Mata kuliah tidak berhasil disimpan!', $e->getMessage()], 500);
         }
     }
 }
