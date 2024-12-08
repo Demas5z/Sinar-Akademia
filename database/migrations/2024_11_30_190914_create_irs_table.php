@@ -1,4 +1,4 @@
-<?php
+<?php  
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -7,21 +7,33 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Menjalankan migrasi.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('irs', function (Blueprint $table) {
+        // Membuat tabel mahasiswa
+        Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');  // Relasi dengan users
+            $table->string('nim', 20)->unique();  // NIM mahasiswa, harus unik
+            $table->string('nama', 100);
+            $table->string('jurusan', 50);
+            $table->string('alamat')->nullable();
+            $table->string('no_telp', 15)->nullable();
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Membalikkan migrasi.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('irs');
+        // Menghapus tabel mahasiswa
+        Schema::dropIfExists('mahasiswa');
     }
 };

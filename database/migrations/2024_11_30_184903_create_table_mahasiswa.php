@@ -1,28 +1,28 @@
 <?php  
 
-use Illuminate\Database\Migrations\Migration;  
-use Illuminate\Database\Schema\Blueprint;  
-use Illuminate\Support\Facades\Schema;  
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration  
-{  
-    public function up()  
-    {  
-        Schema::create('mahasiswa', function (Blueprint $table) {  
-            $table->id();  
-            $table->string('nim', 20);  
-            $table->string('nama', 100);  
-            $table->string('email')->unique();  
-            $table->string('password');  // Kolom password ditambahkan di sini  
-            $table->string('jurusan', 50);  
-            $table->string('alamat')->nullable();  
-            $table->string('no_telp', 15)->nullable();  
-            $table->timestamps();  
-        });  
-    }  
+return new class extends Migration
+{
+    public function up()
+    {
+        // Membuat tabel irs
+        Schema::create('irs', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('mahasiswa_id')->constrained('mahasiswa')->onDelete('cascade');  // Relasi dengan mahasiswa
+            $table->foreignId('mata_kuliah_id')->constrained('mata_kuliah')->onDelete('cascade');  // Relasi dengan mata_kuliah
+            $table->enum('semester', ['Ganjil', 'Genap']);  // Semester
+            $table->year('tahun_akademik');  // Tahun akademik
+            $table->integer('sks');  // SKS yang diambil
+            $table->enum('status', ['Aktif', 'Selesai', 'Cuti']);  // Status IRS
+            $table->timestamps();
+        });
+    }
 
-    public function down()  
-    {  
-        Schema::dropIfExists('mahasiswa');  
-    }  
+    public function down()
+    {
+        Schema::dropIfExists('irs');
+    }
 };

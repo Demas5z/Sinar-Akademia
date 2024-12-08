@@ -34,8 +34,8 @@ class DummyUsersSeeder extends Seeder
                 'password'=>bcrypt('123')
             ],
             [
-                'name'=>'Rudi',
-                'email'=>'rudi@gmail.com',
+                'name'=>'Rusdi',
+                'email'=>'rusdi@gmail.com',
                 'role'=>'Mahasiswa',
                 'password'=>bcrypt('123')
             ]
