@@ -39,7 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           @foreach (App\Models\MataKuliah::all() as $key => $mk)
+                            @foreach (App\Models\MataKuliah::all() as $key => $mk)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $mk->kode_mk }}</td>
