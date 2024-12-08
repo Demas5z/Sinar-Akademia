@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ruang extends Model  
 {  
-    protected $table = 'ruangs'; // Pastikan nama tabel benar  
-    protected $primaryKey = 'Nama_Ruang';  
-    public $incrementing = false;  
-    
-    protected $fillable = [  
-        'Nama_Ruang',   
-        'Kuota',   
-        'Prodi',   
-        'Status'  
-    ];  
+    use HasFactory;
+
+    protected $table = 'ruangs';
+
+    protected $primaryKey = 'Nama_Ruang'; // Menetapkan Nama_Ruang sebagai primary key
+
+    protected $fillable = ['Nama_Ruang', 'Kuota', 'Prodi', 'Status'];
+
+    public $incrementing = false; // Karena primary key bukan auto-increment
+
+    // Relasi dengan tabel jadwal
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class, 'ruangan', 'Nama_Ruang');
+    }
 }

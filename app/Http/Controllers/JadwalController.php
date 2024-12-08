@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\MataKuliah;
@@ -8,15 +7,28 @@ use Illuminate\Http\Request;
 
 class JadwalController extends Controller
 {
-    public function showScheduleForm()
+    // Menampilkan form jadwal dengan pencarian
+    public function showScheduleForm(Request $request)
     {
-        // Mengambil semua mata kuliah dari database beserta jumlah kelasnya
-        $mataKuliah = MataKuliah::orderBy('nama_mk')->get(['id', 'nama_mk', 'jumlah_kelas']);
+        $query = MataKuliah::query();
 
-        // Mengambil data ruangan yang statusnya 'setuju'
-        $ruangan = Ruang::where('Status', 'setuju')->get(['Nama_Ruang']);
-        
-        // Mengirim data mata kuliah dan ruangan ke view
-        return view('kaprodi.jadwal', compact('mataKuliah', 'ruangan'));
+        // Jika ada pencarian, filter berdasarkan nama_mk
+        if ($request->has('search') && $request->search != '') {
+            $query->where('nama_mk', 'like', '%' . $request->search . '%');
+        }
+
+        // Ambil data mata kuliah setelah filter
+        $mataKuliah = $query->get();
+
+        // Ambil data ruang yang tersedia
+        $ruangs = Ruang::where('Status', 'setuju')->get();
+
+        return view('kaprodi.jadwal', compact('mataKuliah', 'ruangs'));
     }
+    public function getRuangan()
+{
+    $ruangs = Ruang::all();  // Mengambil semua ruangan dari database
+    return response()->json($ruangs);  // Mengirimkan data ruang dalam format JSON
+}
+
 }
