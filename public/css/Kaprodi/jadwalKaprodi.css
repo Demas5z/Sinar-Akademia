@@ -59,7 +59,8 @@ body {
 .calendar-container {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
+    max-width: 1200px;  /* Maksimal lebar kontainer */
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -306,15 +307,12 @@ td:first-child {
 .select-block {
     animation: fadeIn 0.5s ease-out;
 }
-.schedule-entry {
-    background-color: #e6f7f5;
-    padding: 5px;
-    margin: 5px 0;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #008080;
-}
-.schedule-entry:hover {
-    background-color: #b3e0d9;
+
+/* Improved image styling */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover; /* Keeps aspect ratio and covers space */
 }
