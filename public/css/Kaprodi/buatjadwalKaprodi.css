@@ -1,0 +1,217 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #20b2aa, #008080);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.dark-mode {
+    color: #e5e5e5;
+    background-color: #1a1a1a;
+}
+
+/* Layout */
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Form Elements */
+.search-input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+
+/* Buttons */
+.btn {
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.btn-primary {
+    background-image: linear-gradient(135deg, #20b2aa, #008080);
+    color: white;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.5);
+}
+
+.btn-edit {
+    background-image: linear-gradient(135deg, #20b2aa, #008080);
+    color: white;
+}
+
+.btn-delete {
+    background-image: linear-gradient(to right, #ef4444, #dc2626, #b91c1c);
+    color: white;
+    margin-left: 0.5rem;
+}
+
+/* Table Styles */
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.display {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.display th,
+.display td {
+    text-align: center;
+    padding: 0.75rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    border-radius: 0.5rem;
+    margin: 2rem auto;
+    max-width: 28rem;
+    width: 70%; /* Adjust width as needed */
+    max-width: 900px;
+    padding: 30px;
+}
+
+.dark-mode .modal-content {
+    background-color: #2d3748;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #9ca3af;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.625rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.5rem;
+    background-color: #f9fafb;
+}
+
+/* Icons */
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.25rem;
+}
+
+.header-bar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.back-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #20b2aa, #008080);
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
