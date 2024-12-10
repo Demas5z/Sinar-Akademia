@@ -32,11 +32,13 @@ Route::get('/jadwal/create', [JadwalController::class, 'showScheduleForm'])->nam
 Route::get('jadwal', [JadwalController::class, 'showScheduleForm'])->name('show-jadwal');
 
 // Route untuk menyimpan jadwal
-Route::post('jadwal', [JadwalController::class, 'store'])->name('store-jadwal');
+Route::post('/jadwal', [JadwalController::class, 'store'])->name('jadwal.store');
 
 Route::get('/jadwal', [JadwalController::class, 'showScheduleForm'])->name('jadwal.showForm');
 
-Route::get('/ruangan', [JadwalController::class, 'getRuangan']);
+Route::get('/ruangan', [JadwalController::class, 'getRuangan'])->name('get.ruangan');
+
+Route::get('/jadwal', [JadwalController::class, 'showForm'])->name('jadwal.showForm'); 
 
 
 
