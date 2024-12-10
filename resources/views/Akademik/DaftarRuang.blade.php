@@ -92,7 +92,7 @@
                             <td>${data.data.Prodi}</td>  
                             <td>${data.data.Status}</td>  
                         </tr>  
-                    `;  
+                    `;
                     $('#ruang-table tbody').append(newRow);  
 
                     // Reset form  
