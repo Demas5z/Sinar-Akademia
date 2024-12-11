@@ -1,6 +1,9 @@
 <?php
 namespace App\Models;
 
+require 'Ruang.php';
+require 'MataKuliah.php';
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

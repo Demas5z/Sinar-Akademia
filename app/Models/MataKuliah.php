@@ -21,4 +21,9 @@ class MataKuliah extends Model
 
         return $kelasLabels;
     }
+
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class, 'kode_mk', 'kode_mk');
+    }
 }

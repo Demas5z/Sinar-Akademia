@@ -31,8 +31,8 @@ class JadwalController extends Controller
                 'schedule' => 'required|array',  
                 'schedule.*.courseId' => 'required',   
                 'schedule.*.day' => 'required|in:senin,selasa,rabu,kamis,jumat',  
-                'schedule.*.waktuMulai' => 'required',  
-                'schedule.*.waktuSelesai' => 'required',  
+                'schedule.*.waktuMulai' => 'required|date_format:H:i',  
+                'schedule.*.waktuSelesai' => 'required|date_format:H:i',  
                 'schedule.*.room' => 'required'  
             ]);  
 
