@@ -44,3 +44,6 @@ Route::get('/jadwal', [JadwalController::class, 'showForm'])->name('jadwal.showF
 
 // Untuk route biasa
 Route::post('/store-mata-kuliah', [MataKuliahController::class, 'store'])->name('store-mata-kuliah');
+
+//Route button edit
+Route::put('/mata-kuliah/{id}', [BuatMataKuliahController::class, 'update'])->name('mata-kuliah.update');

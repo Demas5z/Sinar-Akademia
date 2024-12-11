@@ -215,3 +215,20 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
+
+.btn-edit {
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.btn-submit {
+    outline: 3px solid #0000;
+    box-shadow: 0 0 0 1px rgb(0, 0, 0);
+}

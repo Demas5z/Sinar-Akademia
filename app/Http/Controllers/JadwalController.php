@@ -44,7 +44,7 @@ class JadwalController extends Controller
             $jadwalEntries = [];  
             foreach ($validatedSchedule['schedule'] as $scheduleItem) {  
                 $waktuMulai = Carbon::parse($scheduleItem['waktuMulai'])->format('H:i');  
-                $waktuSelesai = Carbon::parse($scheduleItem['waktuSelesai'])->format('H:i');  
+                $waktuSelesai = Carbon::parse($scheduleItem['waktuSelesai'])->format('H:i[');  
 
                 $jadwalEntries[] = Jadwal::create([  
                     'kode_mk' => $scheduleItem['courseId'],  

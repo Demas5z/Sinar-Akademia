@@ -49,6 +49,7 @@
                                 <td>{{ $mk->sifat }}</td>
                                 <td>{{ $mk->jumlah_kelas }}</td>
                                 <td>
+                                <button type="button" class="btn btn-edit" onclick="openEditModal('{{ $mk->id }}', '{{ $mk->kode_mk }}', '{{ $mk->nama_mk }}', '{{ $mk->plot_semester }}', '{{ $mk->sks }}', '{{ $mk->sifat }}', '{{ $mk->jumlah_kelas }}')"> Edit </button>
                                     <form action="{{ route('mata-kuliah.destroy', $mk->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
@@ -121,55 +122,147 @@
         </div>
     </div>
 
+    <div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Edit Mata Kuliah</h3>
+            <button class="close-btn">&times;</button>
+        </div>
+        <form class="edit-form" id="editForm" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="edit_kodemk">Kode MK</label>
+                    <input type="text" name="kode_mk" id="edit_kodemk" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit_nama">Nama MK</label>
+                    <input type="text" name="nama_mk" id="edit_nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit_plotsemester">Plot Semester</label>
+                    <select id="edit_plotsemester" name="plot_semester">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit_sks">SKS</label>
+                    <input type="number" name="sks" id="edit_sks" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit_sifat">Sifat</label>
+                    <select id="edit_sifat" name="sifat">
+                        <option value="W">Wajib</option>
+                        <option value="P">Pilihan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit_jumlah_kelas">Jumlah Kelas</label>
+                    <input type="number" name="jumlah_kelas" id="edit_jumlah_kelas" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-submit">
+                Update Mata Kuliah
+            </button>
+        </form>
+    </div>
+</div>
+
     <script>
 
-$(document).ready(function() {
-    // Initialize DataTable
-    var tableMk = $('#Matakuliah').DataTable({
-        pageLength: -1,
-        layout: {
-            topStart: null,
-            topEnd: null,
-            bottomStart: 'pageLength',
-            bottomEnd: 'paging'
-        },
-        columnDefs: [
-            {className: "dt-head-center", targets: [0,1,2,3,4,5,6,7]},
-            {className: "dt-body-center", targets: [0,1,2,3,4,5,6,7]}
-        ]
-    });
+    $(document).ready(function() {
+        // Initialize DataTable
+        var tableMk = $('#Matakuliah').DataTable({
+            pageLength: -1,
+            layout: {
+                topStart: null,
+                topEnd: null,
+                bottomStart: 'pageLength',
+                bottomEnd: 'paging'
+            },
+            columnDefs: [
+                {className: "dt-head-center", targets: [0,1,2,3,4,5,6,7]},
+                {className: "dt-body-center", targets: [0,1,2,3,4,5,6,7]}
+            ]
+        });
 
-    // Set default page length after slight delay
-    setTimeout(() => {
-        tableMk.page.len(10).draw();
-    }, 10);
+        // Set default page length after slight delay
+        setTimeout(() => {
+            tableMk.page.len(10).draw();
+        }, 10);
 
-    // Search functionality
-    $('#searchMk').keyup(function() {
-        tableMk.search($(this).val()).draw();
-    });
+        // Search functionality
+        $('#searchMk').keyup(function() {
+            tableMk.search($(this).val()).draw();
+        });
 
-    // Modal functionality
-    const modal = document.getElementById('crud-modal');
-    const openModalBtn = document.getElementById('selectAll');
-    const closeModalBtns = document.getElementsByClassName('close-btn');
+        // Modal functionality
+        const modal = document.getElementById('crud-modal');
+        const openModalBtn = document.getElementById('selectAll');
+        const closeModalBtns = document.getElementsByClassName('close-btn');
 
-    openModalBtn.onclick = function() {
-        modal.style.display = "block";
-    }
+        openModalBtn.onclick = function() {
+            modal.style.display = "block";
+        }
 
-    Array.from(closeModalBtns).forEach(btn => {
-        btn.onclick = function() {
-            modal.style.display = "none";
+        Array.from(closeModalBtns).forEach(btn => {
+            btn.onclick = function() {
+                modal.style.display = "none";
+            }
+        });
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     });
 
+    function openEditModal(id, kodeMk, namaMk, plotSemester, sks, sifat, jumlahKelas) {
+        const modal = document.getElementById('edit-modal');
+        const form = document.getElementById('editForm');
+        const closeModalBtns = document.getElementsByClassName('close-btn');
+        
+        
+        // Set form action URL
+        form.action = `/mata-kuliah/${id}`;
+        
+        // Fill form fields
+        document.getElementById('edit_kodemk').value = kodeMk;
+        document.getElementById('edit_nama').value = namaMk;
+        document.getElementById('edit_plotsemester').value = plotSemester;
+        document.getElementById('edit_sks').value = sks;
+        document.getElementById('edit_sifat').value = sifat;
+        document.getElementById('edit_jumlah_kelas').value = jumlahKelas;
+
+        Array.from(closeModalBtns).forEach(btn => {
+            btn.onclick = function() {
+                modal.style.display = "none";
+            }
+        });
+        
+        modal.style.display = "block";
+    }
+
+    function closeEditModal() {
+        const modal = document.getElementById('edit-modal');
+        modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside
     window.onclick = function(event) {
+        const modal = document.getElementById('edit-modal');
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
-});
+
 </script>
 
 </body>
