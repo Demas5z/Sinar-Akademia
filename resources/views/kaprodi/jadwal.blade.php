@@ -227,12 +227,13 @@
         }  
 
         // Kirim data jadwal ke backend  
-        fetch('{{ route('store-jadwal') }}', {  
-            method: 'POST',  
-            headers: {  
-                'Content-Type': 'application/json',  
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'  
-            },  
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        fetch('{{ route('store-jadwal') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            }, 
             body: JSON.stringify({  
                 schedule: scheduleData.map(item => ({  
                     courseId: item.courseId,  

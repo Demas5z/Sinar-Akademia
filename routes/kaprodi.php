@@ -25,7 +25,7 @@ Route::get('/kaprodi/jadwal', [JadwalController::class, 'showScheduleForm'])->na
 Route::get('/kaprodi/mata-kuliah/{semester}', [JadwalController::class, 'getMataKuliahBySemester']);  
 Route::get('/kaprodi/ruang', [JadwalController::class, 'getRuang']);
 
-Route::post('/store-jadwal', [JadwalController::class, 'store'])->name('store-jadwal');
+Route::post('/store-jadwal', [JadwalController::class, 'storeJadwal'])->name('store-jadwal');
 Route::get('/jadwal/create', [JadwalController::class, 'showScheduleForm'])->name('jadwal.create');
 
 // Route untuk menampilkan form jadwal
