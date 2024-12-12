@@ -74,4 +74,13 @@ class JadwalController extends Controller
             ], 500);  
         }  
     }  
+
+    public function showAllScheduleForm()
+    {
+        $getJadwal = MataKuliah::all();
+        $jadwal = Jadwal::with(['getJadwal', 'ruangan'])->get(); 
+
+        return view('all.jadwal', compact('getJadwal', 'jadwal'));
+    }
+
 }  

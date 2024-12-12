@@ -24,6 +24,7 @@ Route::delete('/mata-kuliah/{id}', [BuatMataKuliahController::class, 'destroy'])
 Route::get('/kaprodi/jadwal', [JadwalController::class, 'showScheduleForm'])->name('kaprodi.jadwal');  
 Route::get('/kaprodi/mata-kuliah/{semester}', [JadwalController::class, 'getMataKuliahBySemester']);  
 Route::get('/kaprodi/ruang', [JadwalController::class, 'getRuang']);
+Route::get('/kaprodi/jadwal/AllJadwal', [JadwalController::class, 'showAllScheduleForm'])->name('all.jadwal');  
 
 Route::post('/store-jadwal', [JadwalController::class, 'storeJadwal'])->name('store-jadwal');
 Route::get('/jadwal/create', [JadwalController::class, 'showScheduleForm'])->name('jadwal.create');
@@ -38,7 +39,7 @@ Route::get('/jadwal', [JadwalController::class, 'showScheduleForm'])->name('jadw
 
 Route::get('/ruangan', [JadwalController::class, 'getRuangan'])->name('get.ruangan');
 
-Route::get('/jadwal', [JadwalController::class, 'showForm'])->name('jadwal.showForm'); 
+Route::get('/jadwal', [JadwalController::class, 'showScheduleForm'])->name('jadwal.showForm'); 
 
 
 

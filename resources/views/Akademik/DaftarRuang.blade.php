@@ -35,10 +35,19 @@
                     <input type="number" id="Kuota" name="Kuota" required>  
                 </div>  
 
-                <div class="form-group">  
-                    <label for="Prodi">Program Studi:</label>  
-                    <input type="text" id="Prodi" name="Prodi" required placeholder="Masukkan nama Prodi">  
-                </div>  
+                <div class="form-group">
+                    <label for="Prodi">Program Studi:</label>
+                    <select id="Prodi" name="Prodi" required>
+                        <option value="">Pilih Program Studi</option>
+                        <option value="Biologi">Biologi</option>
+                        <option value="Fisika">Fisika</option>
+                        <option value="Informatika">Informatika</option>
+                        <option value="Kimia">Kimia</option>
+                        <option value="Matematika">Matematika</option>
+                        <option value="Statistika">Statistika</option>
+                    </select>
+                </div>
+
 
                 <button type="submit" class="submit-btn">Tambah Ruangan</button>  
             </form>  

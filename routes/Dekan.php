@@ -23,3 +23,6 @@ Route::get('/get-ruang', [DekanController::class, 'getRuang'])->name('get.ruang'
 
 // Route untuk memperbarui status ruang setelah disetujui
 Route::post('/update-status-ruang', [DekanController::class, 'updateStatusRuang'])->name('update.status.ruang');
+
+Route::get('/persetujuan-jadwal-dekan/informatika', [DekanController::class, 'tampilJadwalInformatika'])
+    ->name('tampil.jadwal.informatika.dekan');
