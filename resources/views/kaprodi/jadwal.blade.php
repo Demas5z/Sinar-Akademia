@@ -70,6 +70,9 @@
                                 <td class="drop-area" data-day="jumat" data-time="<?= $timeRange ?>"></td>
                             </tr>
                         <?php endfor; ?>
+                        <div class="save-wrapper">
+                            <button id="saveScheduleBtn" class="save-button">Simpan Jadwal</button>
+                        </div>
                     </tbody>
                 </table>
             </div>
@@ -77,9 +80,7 @@
     </div>
 
     <!-- Tombol Save -->
-    <div class="save-wrapper">
-        <button id="saveScheduleBtn">Simpan Jadwal</button>
-    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {  
