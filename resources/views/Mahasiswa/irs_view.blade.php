@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -14,12 +13,12 @@
     <class="container">
         <header class="header-gradient text-white">
             <h1 class="text-3xl font-bold mb-2">Sinar Akademia</h1>
-            <h2 class="text-xl opacity-90" id="pageTitle">Buat IRS - INDEX</h2>
+            <h2 class="text-xl opacity-90" id="pageTitle">IRS - INDEX</h2>
             <div class="mt-4 flex justify-between items-center">
                 <div class="breadcrumb text-sm">
                     <a href="http://127.0.0.1:8000/dashboard">Home</a>
                     <span>/</span>
-                    <span id="breadcrumbTitle">Buat IRS - INDEX</span>
+                    <span id="breadcrumbTitle">IRS - INDEX</span>
                 </div>
                 <div class="text-sm bg-white/10 inline-block px-4 py-2 rounded-full">
                     Mahasiswa
@@ -27,18 +26,12 @@
             </div>
         </header>
 
-        <div class="nav-buttons">
-            <button class="nav-button active" onclick="redirectToBuatIrs()">Buat IRS</button>
-            <button class="nav-button" onclick="redirectToIRS('irs')">IRS</button>
-        </div>
-
-
         <!-- Tampilan IRS -->
         <div id="irsView">  
             <section class="mb-8">  
                 <h3 class="text-xl font-semibold mb-4 text-gray-800">PERKULIAHAN</h3>  
         
-                <div class="semester-card flex justify-between items-center" onclick="toggleCourses('courses1')">  
+                <div class="semester-card flex justify-between items-center" onclick="toggleCourses('selectedCourses')">  
                     <div>  
                         <h4 class="text-lg font-semibold">Semester - 1</h4>  
                         <p class="text-gray-600">Tahun Ajaran 2022/2023 Ganjil</p>  
@@ -58,7 +51,7 @@
                     </ul>  
                 </div>  
         
-             
+                <!-- Ulangi untuk semester lainnya -->  
                 <div class="semester-card flex justify-between items-center" onclick="toggleCourses('courses2')">  
                     <div>  
                         <h4 class="text-lg font-semibold">Semester - 2</h4>  
@@ -81,7 +74,7 @@
             </section>  
         </div>  
         
-         
+        
 
                 <!-- Student Info Card -->  
                 <div class="bg-white rounded-xl shadow-lg p-6 mb-8">  
@@ -108,29 +101,55 @@
                         </div>  
                     </div>  
                 </div>  
+                <div class="container">
+                    <h2>Mata Kuliah Terpilih</h2>
+                    <div class="card-container grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    </div>                    
+                </div>
 
-    <script>  
-
-        function toggleCourses(courseId) {  
-                const courseList = document.getElementById(courseId);  
-                if (courseList.classList.contains('hidden')) {  
-                    courseList.classList.remove('hidden');  
-                } else {  
-                    courseList.classList.add('hidden');  
-                }  
-            }     
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Retrieve the selected courses from localStorage
+        const selectedCourses = JSON.parse(localStorage.getItem('selectedCoursesForIRS') || '[]');
         
-        function redirectToBuatIrs() {
-            window.location.href = "{{ route('buat.irs') }}";
+        // Get the container element to display the courses
+        const courseListContainer = document.querySelector('.selected-courses-list');
+
+        // Check if there are any selected courses
+        if (selectedCourses.length > 0) {
+            // Loop through the selected courses and display them
+            selectedCourses.forEach(course => {
+                // Create a new div for each selected course
+                const courseItem = document.createElement('div');
+                courseItem.classList.add('course-item');
+                
+                // Populate the content of the course item
+                courseItem.innerHTML = `
+                    <span class="course-name">${course.name}</span> - 
+                    <span class="course-sks">${course.sks} SKS</span>
+                `;
+                
+                // Append the new course item to the list
+                courseListContainer.appendChild(courseItem);
+            });
+        } else {
+            // If no courses are selected, display a message
+            const noCoursesMessage = document.createElement('div');
+            noCoursesMessage.textContent = "Anda belum memilih mata kuliah.";
+            courseListContainer.appendChild(noCoursesMessage);
         }
+        
+        function toggleCourses(selectedCourses) {  
+                    const courseList = document.getElementById(selectedCourses);  
+                    if (courseList.classList.contains('hidden')) {  
+                        courseList.classList.remove('hidden');  
+                    } else {  
+                        courseList.classList.add('hidden');  
+                    }  
+                }  
+    });
 
 
-        function redirectToIRS() {
-            window.location.href = "{{ route('irs.view') }}";
-        }
-    
-
-    </script>  
-</body>  
+    </script>
+</body>
 </html>

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
+use App\Http\Controllers\IRSController;
+
 
 Route::get('/', [SesiController::class, 'index'])->name('login');
 Route::post('/', [SesiController::class, 'login']);
@@ -26,4 +28,6 @@ require base_path('routes/pembimbing_akademik.php');
 
 // Masukkan rute role pembimbing kaprodi
 require base_path('routes/kaprodi.php');
+
+
 

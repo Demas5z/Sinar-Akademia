@@ -1,0 +1,27 @@
+.course-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.selected-courses-list {
+    margin-top: 20px;
+}
+
+.course-item {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.course-name {
+    font-weight: bold;
+}
+
+.course-sks {
+    font-style: italic;
+    color: #555;
+}

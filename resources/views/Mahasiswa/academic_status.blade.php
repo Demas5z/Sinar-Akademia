@@ -9,85 +9,10 @@
     <!-- FontAwesome for Icons -->  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  
     <!-- SweetAlert2 CSS -->  
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">  
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ asset('css/Mahasiswa/academic_status.css') }}"> 
     <style>  
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');  
-
-        body {  
-            font-family: 'Quicksand', sans-serif;  
-            background-color: #f5f5f5;  
-            margin: 0;  
-            padding: 0;  
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);  
-        }  
-
-        .container {  
-            max-width: 900px;  
-            margin: 40px auto;  
-            background: white;  
-            padding: 30px;  
-            border-radius: 15px;  
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);  
-            position: relative;  
-            overflow: hidden;  
-        }  
-
-        .back-btn {  
-            display: inline-block;  
-            margin-bottom: 20px;  
-            padding: 10px 15px;  
-            font-size: 14px;  
-            background-color: #38b8a4;  
-            color: white;  
-            border: none;  
-            border-radius: 5px;  
-            cursor: pointer;  
-            text-decoration: none;  
-            transition: all 0.3s ease;  
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
-        }  
-
-        .options {  
-            display: flex;  
-            justify-content: space-between;  
-            gap: 20px;  
-        }  
-
-        .card {  
-            flex: 1;  
-            border-radius: 12px;  
-            padding: 20px;  
-            text-align: center;  
-            transition: all 0.3s ease;  
-            background-color: #ffffff;  
-            border: 1px solid #ddd;  
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  
-            cursor: pointer;  
-        }  
-
-        .btn-aktif {  
-            background-color: #00796b;  
-        }  
-
-        .btn-cuti {  
-            background-color: #d32f2f;  
-        }  
-
-        .footer {  
-            margin-top: 30px;  
-            padding: 20px;  
-            font-size: 14px;  
-            background-color: #f5f5f5;  
-            color: #333;  
-            text-align: center;  
-            border-radius: 12px;  
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  
-        }  
-
-        .footer span {  
-            font-weight: bold;  
-            color: #00796b;  
-        }  
     </style>  
 </head>  
 <body>  

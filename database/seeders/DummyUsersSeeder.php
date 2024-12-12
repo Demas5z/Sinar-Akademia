@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Mahasiswa;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,19 @@ class DummyUsersSeeder extends Seeder
      */
     public function run(): void
     {
+
+        // Ambil semua data mahasiswa
+        $mahasiswas = Mahasiswa::all();
+
+        foreach ($mahasiswas as $mahasiswa) {
+            // Membuat user berdasarkan data mahasiswa
+            User::create([
+                'name' => $mahasiswa->nama,  // Nama diambil dari mahasiswa
+                'email' => $mahasiswa->email,  // Email diambil dari mahasiswa
+                'password' => bcrypt('password123'),  // Password default
+                'role' => 'Mahasiswa',  // Role diatur sebagai Mahasiswa
+            ]);
+        }
 
         $userData = [
             [
