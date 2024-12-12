@@ -43,4 +43,28 @@ class BuatMataKuliahController extends Controller
             return redirect()->route('mata-kuliah.index')->with('error', 'Terjadi kesalahan saat menghapus mata kuliah.');  
         }  
     }  
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $mataKuliah = MataKuliah::findOrFail($id);
+
+            $validatedData = $request->validate([
+                'kode_mk' => 'required|string|max:10',
+                'nama_mk' => 'required|string',
+                'plot_semester' => 'required|integer',
+                'sks' => 'required|integer',
+                'sifat' => 'required|in:W,P',
+                'jumlah_kelas' => 'required|integer'
+            ]);
+
+            $mataKuliah->update($validatedData);
+
+            return redirect()->route('mata-kuliah.index')
+                ->with('success', 'Mata kuliah berhasil diupdate.');
+        } catch (\Exception $e) {
+            return redirect()->route('mata-kuliah.index')
+                ->with('error', 'Terjadi kesalahan saat mengupdate mata kuliah.');
+        }
+    }
 }
