@@ -28,67 +28,65 @@
                         <td>Informatika</td>
                         <td>Belum disetujui</td>
                         <td class="action-buttons">
-                            <button class="btn btn-open">📄Buka File</button>
+                            <button class="btn btn-open" onclick=redirectToJadwalInformatika()>Buka Jadwal</button>
                             <button class="btn btn-approve">Setuju</button>
-                            <button class="btn btn-reject">Tolak</button>
                         </td>
                     </tr>
                     <tr>
                         <td>Biologi</td>
                         <td>Belum disetujui</td>
                         <td class="action-buttons">
-                            <button class="btn btn-open">📄Buka File</button>
+                            <button class="btn btn-open">Buka Jadwal</button>
                             <button class="btn btn-approve">Setuju</button>
-                            <button class="btn btn-reject">Tolak</button>
                         </td>
                     </tr>
                     <tr>
                         <td>Fisika</td>
                         <td>Belum disetujui</td>
                         <td class="action-buttons">
-                            <button class="btn btn-open">📄Buka File</button>
+                            <button class="btn btn-open">Buka Jadwal</button>
                             <button class="btn btn-approve">Setuju</button>
-                            <button class="btn btn-reject">Tolak</button>
                         </td>
                     </tr>
                     <tr>
                         <td>Statistika</td>
                         <td>Belum disetujui</td>
                         <td class="action-buttons">
-                            <button class="btn btn-open">📄Buka File</button>
+                            <button class="btn btn-open">Buka Jadwal</button>
                             <button class="btn btn-approve">Setuju</button>
-                            <button class="btn btn-reject">Tolak</button>
                         </td>
                     </tr>
                     <tr>
                         <td>Kimia</td>
                         <td>Belum disetujui</td>
                         <td class="action-buttons">
-                            <button class="btn btn-open">📄Buka File</button>
+                            <button class="btn btn-open">Buka Jadwal</button>
                             <button class="btn btn-approve">Setuju</button>
-                            <button class="btn btn-reject">Tolak</button>
                         </td>
                     </tr>
                     <tr>
                         <td>Bioteknologi</td>
                         <td>Belum disetujui</td>
                         <td class="action-buttons">
-                            <button class="btn btn-open">📄Buka File</button>
+                            <button class="btn btn-open">Buka Jadwal</button>
                             <button class="btn btn-approve">Setuju</button>
-                            <button class="btn btn-reject">Tolak</button>
                         </td>
                     </tr>
                     <tr>
                         <td>Matematika</td>
                         <td>Belum disetujui</td>
                         <td class="action-buttons">
-                            <button class="btn btn-open">📄Buka File</button>
+                            <button class="btn btn-open">Buka Jadwal</button>
                             <button class="btn btn-approve">Setuju</button>
-                            <button class="btn btn-reject">Tolak</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <script>
+            function redirectToJadwalInformatika() {
+                window.location.href = "{{ route('tampil.jadwal.informatika.dekan') }}";
+            }
+        </script>
 </body>
 </html>

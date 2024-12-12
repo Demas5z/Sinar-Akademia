@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ruang;
+use App\Models\Jadwal;
 use Illuminate\Support\Facades\Log;
 
 class DekanController extends Controller
@@ -17,29 +18,42 @@ class DekanController extends Controller
 
     // Mengupdate status ruangan menjadi 'setuju'
     public function updateStatusRuang(Request $request)
-{
-    // Validasi input
-    $request->validate([
-        'Nama_Ruang' => 'required|string'
-    ]);
+    {
+        // Validasi input
+        $request->validate([
+            'Nama_Ruang' => 'required|string'
+        ]);
 
-    // Cari ruang berdasarkan Nama_Ruang (sesuai dengan kolom di database)
-    $ruang = Ruang::where('Nama_Ruang', $request->Nama_Ruang)->first();
+        // Cari ruang berdasarkan Nama_Ruang (sesuai dengan kolom di database)
+        $ruang = Ruang::where('Nama_Ruang', $request->Nama_Ruang)->first();
 
-    if (!$ruang) {
-        return response()->json(['status' => 'error', 'message' => 'Ruang tidak ditemukan.'], 404);
+        if (!$ruang) {
+            return response()->json(['status' => 'error', 'message' => 'Ruang tidak ditemukan.'], 404);
+        }
+
+        // Pastikan ruang belum disetujui
+        if ($ruang->Status !== 'belum') {
+            return response()->json(['status' => 'error', 'message' => 'Ruang sudah disetujui sebelumnya.'], 400);
+        }
+
+        // Perbarui status ruang menjadi 'setuju'
+        $ruang->Status = 'setuju';
+        $ruang->save();
+
+        // Kirim respons sukses
+        return response()->json(['status' => 'success', 'message' => 'Ruang berhasil disetujui.']);
     }
 
-    // Pastikan ruang belum disetujui
-    if ($ruang->Status !== 'belum') {
-        return response()->json(['status' => 'error', 'message' => 'Ruang sudah disetujui sebelumnya.'], 400);
+    public function tampilJadwalInformatika()
+    {
+        // Debug: Cetak semua jadwal
+        $jadwals = Jadwal::with(['mataKuliah', 'ruangan'])
+            ->get();
+        
+        //dd($jadwals); // Ini akan menghentikan eksekusi dan menampilkan semua data jadwal
+    
+        $jadwalsGrouped = $jadwals->groupBy('hari');
+    
+        return view('Dekan.TampilJadwal', compact('jadwals'));
     }
-
-    // Perbarui status ruang menjadi 'setuju'
-    $ruang->Status = 'setuju';
-    $ruang->save();
-
-    // Kirim respons sukses
-    return response()->json(['status' => 'success', 'message' => 'Ruang berhasil disetujui.']);
-}
 }

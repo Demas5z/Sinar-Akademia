@@ -9,14 +9,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 </head>
 <body>
-    <div class="header-bar">
-        <h3>Sinar Akademia</h3>
-        <a href="{{ route('kaprodi.dashboard') }}" class="back-button">↤ Kembali</a>
-    </div>
+    <x-navbar>Ketua Program Studi</x-navbar>
+        
+    <a class="back-btn" href="/dashboard">← Back</a>  
 
     <!-- Form Pencarian -->
     <div class="calendar-wrapper">
-        <div class="calendar-container">
+        <div class="calendar-container">  
             <div class="search-wrapper">
                 <form action="{{ route('jadwal.showForm') }}" method="GET">
                     <input type="text" name="search" placeholder="Cari Mata Kuliah" value="{{ request('search') }}">
@@ -34,7 +33,7 @@
                         data-jumlah-kelas="{{ $mk->jumlah_kelas }}"   
                         draggable="true"  
                     >  
-                        <p>{{ $mk->nama_mk }} {{ $kelasLabel }} ({{ $mk->sks }} SKS)</p>  
+                        <p>{{ $kelasLabel }} ({{ $mk->sks }} SKS)</p>  
                     </div>  
                 @endforeach  
             @endforeach 
@@ -82,7 +81,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {  
+    document.addEventListener('DOMContentLoaded', function () {  
     const courseItems = document.querySelectorAll('.course-item');  
     const dropAreas = document.querySelectorAll('.drop-area');  
     const saveScheduleBtn = document.getElementById('saveScheduleBtn');  
@@ -182,7 +181,7 @@
             });  
 
             // Ambil daftar ruangan dari backend  
-            fetch('{{ route('get.ruangan') }}', {  
+            fetch("{{ route('get.ruangan') }}", {  
                 method: 'GET',  
                 headers: {  
                     'Content-Type': 'application/json',  
@@ -191,7 +190,10 @@
             })  
             .then(response => response.json())  
             .then(ruangs => {  
-                ruangs.forEach(ruang => {  
+                // Filter hanya ruangan yang memiliki status 'disetujui' jika data belum terfilter di server
+                const approvedRooms = ruangs.filter(ruangs => ruangs.Status === 'setuju');
+
+                approvedRooms.forEach(ruang => {  
                     const option = document.createElement('option');  
                     option.value = ruang.Nama_Ruang;  
                     option.textContent = ruang.Nama_Ruang;  
@@ -200,7 +202,7 @@
             })  
             .catch(error => {  
                 console.error('Error loading rooms:', error);  
-            });  
+            });
 
             // Bersihkan area drop dan tambahkan informasi mata kuliah  
             area.innerHTML = '';  
@@ -228,7 +230,7 @@
 
         // Kirim data jadwal ke backend  
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        fetch('{{ route('store-jadwal') }}', {
+        fetch("{{ route('store-jadwal') }}", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -280,7 +282,7 @@
 
             alert('Jadwal berhasil direset.');  
         }  
-    });  
+    });   
 });
     </script>
 </body>

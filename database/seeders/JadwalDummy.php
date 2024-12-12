@@ -15,7 +15,7 @@ class JadwalDummy extends Seeder
     public function run()
     {
         DB::table('jadwals')->insert([
-            'kode_mk' => 'PAIK122',
+            'kode_mk' => 'PAIK6201',
             'hari' => 'SENIN',
             'waktu_mulai' => '08:00',
             'waktu_selesai' => '10:00',
